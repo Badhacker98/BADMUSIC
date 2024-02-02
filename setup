@@ -82,7 +82,7 @@ installation(){
 }
 
 clear
-pprint "Welcome to DAXXMUSIC Setup Installer\n\n"
+pprint "Welcome to BADMUSIC Setup Installer\n\n"
 pprint "If you see any error during Installation Process, Please refer to these files for logs: "
 pprint "\nFor node js errors , Checkout nodelog.txt"
 pprint "\nFor pypi packages errors , Checkout pypilog.txt"
@@ -94,7 +94,7 @@ update
 packages
 node
 installation
-pprint "\n\n\n\n\nDAXXMUSIC Installation Completed !" "cgreen"
+pprint "\n\n\n\n\nBADMUSIC Installation Completed !" "cgreen"
 sleep 1
 clear
 
@@ -122,5 +122,5 @@ STRING_SESSION = $string_session
 OWNER_ID = $ownid""" > .env
 clear
 
-pprint "\n\n\nThanks for using DAXXMUSIC installer, your vars have been saved successfully ! \nIf you wanna add more variables add them in your env by : vi .env"
+pprint "\n\n\nThanks for using BADMUSIC installer, your vars have been saved successfully ! \nIf you wanna add more variables add them in your env by : vi .env"
 pprint "\n\nNow you can start the bot by : bash start\n\n"
