@@ -1,4 +1,4 @@
-from BADMUSIC.core.bot import VIP
+from BADMUSIC.core.bot import BAD
 from BADMUSIC.core.dir import dirr
 from BADMUSIC.core.git import git
 from BADMUSIC.core.userbot import Userbot
