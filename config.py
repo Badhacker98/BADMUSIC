@@ -12,12 +12,6 @@ API_HASH = getenv("API_HASH")
 # Get your token from @BotFather on Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN")
 
-# Get Your bot username
-BOT_USERNAME = getenv("BOT_USERNAME" , "MissBroken_Bot")
-
-# Don't Add style font 
-BOT_USERNAME2 = getenv("BOT_USERNAME2" , "miss Broken")
-
 # Get your mongo url from cloud.mongodb.com
 MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 
@@ -25,6 +19,9 @@ DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 16000))
 
 # Chat id of a group for logging bot's activities
 LOGGER_ID = int(getenv("LOGGER_ID"))
+
+#Put your bot username here
+BOT_USERNAME = getenv("New_Music_Test_Bot")
 
 # Get this value from  on Telegram by /id
 OWNER_ID = int(getenv("OWNER_ID"))
@@ -35,12 +32,9 @@ HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
 # Get it from http://dashboard.heroku.com/account
 HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
-    # Don't edit variables below this line #
-SUDO_USERS = [6566179661, 6415940074]
-
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/badmunda98/testbot",
+    "https://github.com/MXNIHACKER/PbxMusic",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 GIT_TOKEN = getenv(
@@ -48,7 +42,7 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Team_Hunter_X")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Devils_Hell_0")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", None )
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", True))
@@ -77,20 +71,27 @@ STRING4 = getenv("STRING_SESSION4", None)
 STRING5 = getenv("STRING_SESSION5", None)
 
 
-   
-# ██████╗░██████╗░░█████╗░██╗░░██╗███████╗███╗░░██╗
-# ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝████╗░██║
-# ██████╦╝██████╔╝██║░░██║█████═╝░█████╗░░██╔██╗██║
-# ██╔══██╗██╔══██╗██║░░██║██╔═██╗░██╔══╝░░██║╚████║
-# ██████╦╝██║░░██║╚█████╔╝██║░╚██╗███████╗██║░╚███║
-# ╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝
-# 
-#      ███╗░░░███╗██╗░░░██╗░██████╗██╗░█████╗░
-#      ████╗░████║██║░░░██║██╔════╝██║██╔══██╗
-#      ██╔████╔██║██║░░░██║╚█████╗░██║██║░░╚═╝
-#      ██║╚██╔╝██║██║░░░██║░╚═══██╗██║██║░░██╗
-#      ██║░╚═╝░██║╚██████╔╝██████╔╝██║╚█████╔╝
-#      ╚═╝░░░░░╚═╝░╚═════╝░╚═════╝░╚═╝░╚════╝░
+
+#  ██████╗░███████╗██╗░░░██╗██╗██╗░░░░░
+#  ██╔══██╗██╔════╝██║░░░██║██║██║░░░░░
+#  ██║░░██║█████╗░░╚██╗░██╔╝██║██║░░░░░
+#  ██║░░██║██╔══╝░░░╚████╔╝░██║██║░░░░░
+#  ██████╔╝███████╗░░╚██╔╝░░██║███████╗
+#  ╚═════╝░╚══════╝░░░╚═╝░░░╚═╝╚══════╝
+
+#                   ██╗░░██╗
+#                   ╚██╗██╔╝
+#                   ░╚███╔╝░
+#                   ░██╔██╗░
+#                   ██╔╝╚██╗
+#                   ╚═╝░░╚═╝
+
+#  ███╗░░░███╗██╗░░░██╗░██████╗██╗░█████╗░
+#  ████╗░████║██║░░░██║██╔════╝██║██╔══██╗
+#  ██╔████╔██║██║░░░██║╚█████╗░██║██║░░╚═╝
+#  ██║╚██╔╝██║██║░░░██║░╚═══██╗██║██║░░██╗
+#  ██║░╚═╝░██║╚██████╔╝██████╔╝██║╚█████╔╝
+#  ╚═╝░░░░░╚═╝░╚═════╝░╚═════╝░╚═╝░╚════╝░
 
 
 
@@ -104,21 +105,21 @@ confirmer = {}
 
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://telegra.ph/file/a199c1adfa09d02786ca7.jpg"
+    "START_IMG_URL", "https://te.legra.ph/file/958f6eea876a36437e879.jpg"
 )
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://te.legra.ph/file/0661f62601d0decde581f.jpg"
+    "PING_IMG_URL", "https://te.legra.ph/file/c1dda633c676eb3a9b8a0.jpg"
 )
-PLAYLIST_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-STATS_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-TELEGRAM_AUDIO_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-TELEGRAM_VIDEO_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-STREAM_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-SOUNCLOUD_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-YOUTUBE_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://te.legra.ph/file/f1e2fce89f46e84e46207.jpg"
+PLAYLIST_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+STATS_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+TELEGRAM_AUDIO_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+TELEGRAM_VIDEO_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+STREAM_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+SOUNCLOUD_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+YOUTUBE_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+SPOTIFY_ARTIST_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+SPOTIFY_ALBUM_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
+SPOTIFY_PLAYLIST_IMG_URL = "https://te.legra.ph/file/40513bcf8a1a5c92e0a9c.jpg"
 
 
 def time_to_seconds(time):
@@ -139,4 +140,4 @@ if SUPPORT_CHAT:
     if not re.match("(?:http|https)://", SUPPORT_CHAT):
         raise SystemExit(
             "[ERROR] - Your SUPPORT_CHAT url is wrong. Please ensure that it starts with https://"
-)
+        )
