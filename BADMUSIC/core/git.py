@@ -50,21 +50,21 @@ def git():
             origin = repo.create_remote("origin", BAD_REPO)
         origin.fetch()
         repo.create_head(
-            config.UPSTREAM_BRANCH,
-            origin.refs[config.UPSTREAM_BRANCH],
+            config.BAD_BRANCH,
+            origin.refs[config.BAD_BRANCH],
         )
-        repo.heads[config.UPSTREAM_BRANCH].set_tracking_branch(
-            origin.refs[config.UPSTREAM_BRANCH]
+        repo.heads[config.BAD_BRANCH].set_tracking_branch(
+            origin.refs[config.BAD_BRANCH]
         )
-        repo.heads[config.UPSTREAM_BRANCH].checkout(True)
+        repo.heads[config.BAD_BRANCH].checkout(True)
         try:
             repo.create_remote("origin", config.BAD_REPO)
         except BaseException:
             pass
         nrs = repo.remote("origin")
-        nrs.fetch(config.UPSTREAM_BRANCH)
+        nrs.fetch(config.BAD_BRANCH)
         try:
-            nrs.pull(config.UPSTREAM_BRANCH)
+            nrs.pull(config.BAD_BRANCH)
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -r requirements.txt")
