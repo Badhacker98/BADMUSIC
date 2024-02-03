@@ -30,13 +30,13 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
 
 
 def git():
-    REPO_LINK = config.UPSTREAM_REPO
+    REPO_LINK = config.BAD_REPO
     if config.GIT_TOKEN:
         GIT_USERNAME = REPO_LINK.split("com/")[1].split("/")[0]
         TEMP_REPO = REPO_LINK.split("https://")[1]
-        UPSTREAM_REPO = f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
+        BAD_REPO = f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
     else:
-        UPSTREAM_REPO = config.UPSTREAM_REPO
+        BAD_REPO = config.BAD_REPO
     try:
         repo = Repo()
         LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
