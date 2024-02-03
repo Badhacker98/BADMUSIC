@@ -24,7 +24,7 @@
 </h3>
 
 <h3 align="center">
-    ─「 ❣️ᴅɪʟ ᴛʜᴏᴜɢʜᴛs❣️ 」─   
+    ─「 ❣️ʙᴀss sᴏɴɢ❣️ 」─   
 </h3>
 
 <h3 align="center">
