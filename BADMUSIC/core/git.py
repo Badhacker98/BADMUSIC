@@ -5,7 +5,7 @@ from typing import Tuple
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError
 
-import config
+import sukh
 
 from ..logging import LOGGER
 
@@ -30,13 +30,13 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
 
 
 def git():
-    REPO_LINK = config.UPSTREAM_REPO
-    if config.GIT_TOKEN:
+    REPO_LINK = sukh.UPSTREAM_REPO
+    if sukh.GIT_TOKEN:
         GIT_USERNAME = REPO_LINK.split("com/")[1].split("/")[0]
         TEMP_REPO = REPO_LINK.split("https://")[1]
-        UPSTREAM_REPO = f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
+        UPSTREAM_REPO = f"https://{GIT_USERNAME}:{sukh.GIT_TOKEN}@{TEMP_REPO}"
     else:
-        UPSTREAM_REPO = config.UPSTREAM_REPO
+        UPSTREAM_REPO = sukh.UPSTREAM_REPO
     try:
         repo = Repo()
         LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
@@ -50,21 +50,21 @@ def git():
             origin = repo.create_remote("origin", UPSTREAM_REPO)
         origin.fetch()
         repo.create_head(
-            config.UPSTREAM_BRANCH,
-            origin.refs[config.UPSTREAM_BRANCH],
+            sukh.UPSTREAM_BRANCH,
+            origin.refs[sukh.UPSTREAM_BRANCH],
         )
-        repo.heads[config.UPSTREAM_BRANCH].set_tracking_branch(
-            origin.refs[config.UPSTREAM_BRANCH]
+        repo.heads[sukh.UPSTREAM_BRANCH].set_tracking_branch(
+            origin.refs[sukh.UPSTREAM_BRANCH]
         )
-        repo.heads[config.UPSTREAM_BRANCH].checkout(True)
+        repo.heads[sukh.UPSTREAM_BRANCH].checkout(True)
         try:
-            repo.create_remote("origin", config.UPSTREAM_REPO)
+            repo.create_remote("origin", sukh.UPSTREAM_REPO)
         except BaseException:
             pass
         nrs = repo.remote("origin")
-        nrs.fetch(config.UPSTREAM_BRANCH)
+        nrs.fetch(sukh.UPSTREAM_BRANCH)
         try:
-            nrs.pull(config.UPSTREAM_BRANCH)
+            nrs.pull(sukh.UPSTREAM_BRANCH)
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -r requirements.txt")
