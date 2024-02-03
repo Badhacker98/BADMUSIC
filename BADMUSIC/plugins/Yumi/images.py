@@ -1,6 +1,6 @@
 import requests
 from requests import get 
-from VIPMUSIC import app
+from BADMUSIC import app
 from pyrogram import filters
 from pyrogram.types import InputMediaPhoto
 
