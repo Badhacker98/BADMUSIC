@@ -26,17 +26,21 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
             process.pid,
         )
 
-    return asyncio.get_event_loop().run_until_complete(install_requirements())
+    return asyncio.get_event_loop().run_until_complete(
+        install_requirements()
+    )
 
 
 def git():
-    REPO_LINK = config.BAD_REPO
+    REPO_LINK = config.UPSTREAM_REPO
     if config.GIT_TOKEN:
         GIT_USERNAME = REPO_LINK.split("com/")[1].split("/")[0]
         TEMP_REPO = REPO_LINK.split("https://")[1]
-        BAD_REPO = f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
+        UPSTREAM_REPO = (
+            f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
+        )
     else:
-        BAD_REPO = config.BAD_REPO
+        UPSTREAM_REPO = config.UPSTREAM_REPO
     try:
         repo = Repo()
         LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
@@ -47,26 +51,26 @@ def git():
         if "origin" in repo.remotes:
             origin = repo.remote("origin")
         else:
-            origin = repo.create_remote("origin", BAD_REPO)
+            origin = repo.create_remote("origin", UPSTREAM_REPO)
         origin.fetch()
         repo.create_head(
-            config.BAD_BRANCH,
-            origin.refs[config.BAD_BRANCH],
+            config.UPSTREAM_BRANCH,
+            origin.refs[config.UPSTREAM_BRANCH],
         )
-        repo.heads[config.BAD_BRANCH].set_tracking_branch(
-            origin.refs[config.BAD_BRANCH]
+        repo.heads[config.UPSTREAM_BRANCH].set_tracking_branch(
+            origin.refs[config.UPSTREAM_BRANCH]
         )
-        repo.heads[config.BAD_BRANCH].checkout(True)
+        repo.heads[config.UPSTREAM_BRANCH].checkout(True)
         try:
-            repo.create_remote("origin", config.BAD_REPO)
+            repo.create_remote("origin", config.UPSTREAM_REPO)
         except BaseException:
             pass
         nrs = repo.remote("origin")
-        nrs.fetch(config.BAD_BRANCH)
+        nrs.fetch(config.UPSTREAM_BRANCH)
         try:
-            nrs.pull(config.BAD_BRANCH)
+            nrs.pull(config.UPSTREAM_BRANCH)
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -r requirements.txt")
-        LOGGER(__name__).info(f"Fetching updates from upstream repository...")
-            
+        LOGGER(__name__).info(f"Fetching updates from BADMUSIC...")
+        
