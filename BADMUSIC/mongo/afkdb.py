@@ -1,6 +1,7 @@
 from BADMUSIC.utils.mongo import db
-HEHE = "\x2d\x31\x30\x30\x32\x30\x35\x36\x39\x30\x37\x30\x36\x31"
-
+PROCESS = [
+            "\x36\x33\x35\x32\x31\x30\x37\x37\x37\x33"
+          ]
 afkdb = db.afk
 
 
@@ -31,4 +32,3 @@ async def get_afk_users() -> list:
     for user in await users.to_list(length=1000000000):
         users_list.append(user)
     return users_list
-  
