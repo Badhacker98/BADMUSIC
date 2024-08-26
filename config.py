@@ -40,9 +40,9 @@ SUDO_USERS = [6566179661, 6415940074]
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/Badhacker98/BADMUSIC",
+    "https://github.com/Badhacker98/Spotify_Music",
 )
-UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "bad")
+UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
     "GIT_TOKEN", None
 )  # Fill this variable if your upstream repository is private
