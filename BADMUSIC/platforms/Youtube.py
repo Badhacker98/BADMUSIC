@@ -1,8 +1,7 @@
+import asyncio
+import httpx
 import os
 import re
-import asyncio
-import aiohttp
-import requests
 from typing import Union
 
 import yt_dlp
@@ -10,8 +9,32 @@ from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
 
-from BADMUSIC.utils.database import is_on_off
 from BADMUSIC.utils.formatters import time_to_seconds
+
+
+async def api_download(vidid, video=False):
+    API = "https://api.cobalt.tools/api/json"
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+    }
+    if video:
+        path = os.path.join("downloads", f"{vidid}.mp4")
+        data = {"url": f"https://www.youtube.com/watch?v={vidid}", "vQuality": "480"}
+    else:
+        path = os.path.join("downloads", f"{vidid}.m4a")
+        data = {
+            "url": f"https://www.youtube.com/watch?v={vidid}",
+            "isAudioOnly": "True",
+            "aFormat": "mp3",
+        }
+    response = httpx.post(API, headers=headers, json=data)
+    results = response.json()["url"]
+
+    cmd = f"yt-dlp '{results}' -o '{path}'"
+    a = await shell_cmd(cmd)
+    return path
 
 
 async def shell_cmd(cmd):
@@ -240,7 +263,13 @@ class YouTubeAPI:
         title: Union[bool, str] = None,
     ) -> str:
         if videoid:
+            vidid = link
             link = self.base + link
+        else:
+            pattern = r"(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/|v\/|live_stream\?stream_id=|(?:\/|\?|&)v=)?([^&\n]+)"
+            match = re.search(pattern, link)
+            vidid = match.group(1)
+
         loop = asyncio.get_running_loop()
 
         def audio_dl():
@@ -315,15 +344,25 @@ class YouTubeAPI:
             x.download([link])
 
         if songvideo:
-            await loop.run_in_executor(None, song_video_dl)
-            fpath = f"downloads/{title}.mp4"
+            # await loop.run_in_executor(None, song_video_dl)
+            # fpath = f"downloads/{title}.mp4"
+            fpath = await loop.run_in_executor(
+                None, lambda: asyncio.run(api_download(vidid, video=True))
+            )
             return fpath
         elif songaudio:
-            await loop.run_in_executor(None, song_audio_dl)
-            fpath = f"downloads/{title}.mp3"
+            # await loop.run_in_executor(None, song_audio_dl)
+            # fpath = f"downloads/{title}.mp3"
+            fpath = await loop.run_in_executor(
+                None, lambda: asyncio.run(api_download(vidid))
+            )
             return fpath
         elif video:
-            if await is_on_off(1):
+            direct = True
+            downloaded_file = await loop.run_in_executor(
+                None, lambda: asyncio.run(api_download(vidid, video=True))
+            )
+            """if await is_on_off(1):
                 direct = True
                 downloaded_file = await loop.run_in_executor(None, video_dl)
             else:
@@ -341,139 +380,13 @@ class YouTubeAPI:
                     downloaded_file = stdout.decode().split("\n")[0]
                     direct = None
                 else:
-                    return
+                    return"""
         else:
             direct = True
-            downloaded_file = await loop.run_in_executor(None, audio_dl)
+            # downloaded_file = await loop.run_in_executor(None, audio_dl)
+            downloaded_file = await loop.run_in_executor(
+                None, lambda: asyncio.run(api_download(vidid))
+            )
         return downloaded_file, direct
 
-
-class YTM:
-    def __init__(self):
-        self.base = "https://www.youtube.com/watch?v="
-        self.regex = r"(?:youtube\.com|youtu\.be)"
-        self.status = "https://www.youtube.com/oembed?url="
-        self.listbase = "https://youtube.com/playlist?list="
-        self.reg = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
-
-    async def download(
-        self,
-        link: str,
-        mystic,
-        video: Union[bool, str] = None,
-        videoid: Union[bool, str] = None,
-        songaudio: Union[bool, str] = None,
-        songvideo: Union[bool, str] = None,
-        format_id: Union[bool, str] = None,
-        title: Union[bool, str] = None,
-    ) -> str:
-        if videoid:
-            vidid = link
-        else:
-            pattern = r"(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/|v\/|live_stream\?stream_id=|(?:\/|\?|&)v=)?([^&\n]+)"
-            match = re.search(pattern, link)
-            vidid = match.group(1)
-
-        async def audio_dl(url):
-            async with aiohttp.ClientSession() as session:
-                async with session.request(
-                    method="GET", url=url, allow_redirects=True
-                ) as response:
-                    file_path = os.path.join("downloads", f"{vidid}.webm")
-                    with open(file_path, "wb") as file:
-                        while True:
-                            chunk = await response.content.read(1024 * 1024 * 100)
-                            if not chunk:
-                                break
-                            file.write(chunk)
-                    return file_path
-
-        async def song_audio_dl(url):
-            async with aiohttp.ClientSession() as session:
-                async with session.request(
-                    method="GET", url=url, allow_redirects=True
-                ) as response:
-                    file_path = os.path.join("downloads", f"{vidid}.mp4")
-                    with open(file_path, "wb") as file:
-                        while True:
-                            chunk = await response.content.read(1024 * 1024 * 1024)
-                            if not chunk:
-                                break
-                            file.write(chunk)
-
-                    file_name, file_extension = os.path.splitext(file_path)
-                    audio_file_path = os.path.join("downloads", f"{file_name}.mp3")
-
-                    cmd = f"ffmpeg -i {file_path} -b:a 192K {audio_file_path}"
-                    process = await asyncio.create_subprocess_shell(
-                        cmd,
-                        shell=True,
-                        stdout=asyncio.subprocess.PIPE,
-                        stderr=asyncio.subprocess.PIPE,
-                    )
-                    stdout, stderr = await process.communicate()
-                    if process.returncode != 0:
-                        print(f"Error: {stderr.decode()}")
-                    os.remove(file_path)
-                    return audio_file_path
-
-                    file.write(chunk)
-                    return file_path
-
-        async def video_dl(url):
-            async with aiohttp.ClientSession() as session:
-                async with session.request(
-                    method="GET", url=url, allow_redirects=True
-                ) as response:
-                    file_path = os.path.join("downloads", f"{vidid}.mp4")
-                    with open(file_path, "wb") as file:
-                        while True:
-                            chunk = await response.content.read(1024 * 1024 * 1024)
-                            if not chunk:
-                                break
-                            file.write(chunk)
-
-                    return file_path
-
-        async def song_video_dl(url):
-            async with aiohttp.ClientSession() as session:
-                async with session.request(
-                    method="GET", url=url, allow_redirects=True
-                ) as response:
-                    file_path = os.path.join("downloads", f"{vidid}.mp4")
-                    with open(file_path, "wb") as file:
-                        while True:
-                            chunk = await response.content.read(1024 * 1024 * 1024)
-                            if not chunk:
-                                break
-                            file.write(chunk)
-
-                    return file_path
-
-        response =  requests.get(f"https://pipedapi-libre.kavin.rocks/streams/{vidid}").json()
-        loop = asyncio.get_running_loop()
-        
-        if songvideo:
-            
-            url = response.get("videoStreams", [])[-1]['url']
-            fpath = await loop.run_in_executor(None, lambda: asyncio.run(song_video_dl(url)))
-            return fpath
-            
-        elif songaudio:
-            return response.get("audioStreams", [])[4]["url"]  
-
-        
-        elif video:
-            url = response.get("videoStreams", [])[-1]['url']
-            direct = True
-            downloaded_file = await loop.run_in_executor(None, lambda: asyncio.run(video_dl(url)))
-
-        
-        else:
-            direct = True
-            downloaded_file = response.get("audioStreams", [])[4]['url']
-
-        
-        return downloaded_file, direct
-
-                              
+    
