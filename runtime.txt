@@ -1,1 +1,1 @@
-python-3.11.4
+gunicorn app:app & python3 -m BADMUSIC
