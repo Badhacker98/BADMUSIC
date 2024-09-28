@@ -58,7 +58,7 @@ class BADBOT(Client):
             try:
                 await self.send_photo(
                     config.LOG_GROUP_ID,
-                    photo=config.START_IMG_URL,
+                    photo=config.BOT_IMG_URL,
                     caption=f"╔════❰💓ᴡᴇʟᴄᴏᴍᴇ💓❱════❍⊱❁۪۪\n║\n║┣⪼💫ʙᴏᴛ sᴛᴀʀᴛᴇᴅ ʙᴀʙʏ ❤️\n║\n║┣⪼ {self.name}\n║\n║┣⪼🎈ɪᴅ:- `{self.id}` \n║\n║┣⪼🎄@{self.username} \n║ \n║┣⪼💖ᴛʜᴀɴᴋs ғᴏʀ ᴜsɪɴɢ😍\n║\n╚════════════════❍⊱❁",
                     reply_markup=button,
                 )
