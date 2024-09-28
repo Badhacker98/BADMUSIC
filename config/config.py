@@ -198,6 +198,11 @@ START_IMG_URL = getenv(
     "https://envs.sh/SL4.jpg",
 )
 
+BOT_IMG_URL = getenv(
+    "BOT_IMG_URL",
+    "https://envs.sh/SYV.mp4",
+)
+
 PING_IMG_URL = getenv(
     "PING_IMG_URL",
     "https://telegra.ph/file/91533956c91d0fd7c9f20.jpg",
