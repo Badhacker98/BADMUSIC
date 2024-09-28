@@ -200,7 +200,7 @@ START_IMG_URL = getenv(
 
 BOT_IMG_URL = getenv(
     "BOT_IMG_URL",
-    "https://envs.sh/SYV.mp4",
+    "https://envs.sh/SY-.jpg",
 )
 
 PING_IMG_URL = getenv(
