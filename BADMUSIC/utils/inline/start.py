@@ -4,7 +4,6 @@ import config
 from config import SUPPORT_GROUP
 from BADMUSIC import app
 
-
 def start_pannel(_):
     buttons = [
         [
@@ -53,5 +52,22 @@ def alive_panel(_):
             ),
             InlineKeyboardButton(text=_["S_B_3"], url=f"{SUPPORT_GROUP}"),
         ],
+    ]
+    return buttons
+
+
+def music_start_panel(_):
+    buttons = [
+        [
+            InlineKeyboardButton(
+                text="💠 ᴀᴅᴅ ᴍᴇ ɪɴ ɴᴇᴡ ɢʀᴏᴜᴘ 💠",
+                url=f"https://t.me/{app.username}?startgroup=true",
+            )
+        ],
+        [
+            InlineKeyboardButton(text="ᴀʙᴏᴜᴛ 📝", callback_data="about"),
+            InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ 🥀", callback_data="support"),
+        ],
+        [InlineKeyboardButton(text="۞ ғᴇᴀᴛᴜʀᴇ ۞", callback_data="feature")],
     ]
     return buttons
