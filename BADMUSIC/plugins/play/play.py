@@ -16,6 +16,7 @@ import config
 from config import BANNED_USERS, lyrical
 from BADMUSIC import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 from BADMUSIC.core.call import BAD
+from BADMUSIC.utils.database import is_served_user
 from BADMUSIC.utils import seconds_to_min, time_to_seconds
 from BADMUSIC.utils.channelplay import get_channeplayCB
 from BADMUSIC.utils.database import (
