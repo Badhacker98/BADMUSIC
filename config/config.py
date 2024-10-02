@@ -195,7 +195,7 @@ autoclean = []
 
 START_IMG_URL = getenv(
     "START_IMG_URL",
-    "https://envs.sh/SL4.jpg",
+    "https://envs.sh/WZE.jpg",
 )
 
 BOT_IMG_URL = getenv(
