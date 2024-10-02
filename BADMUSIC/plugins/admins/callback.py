@@ -39,7 +39,7 @@ from BADMUSIC.utils.inline import (
 )
 from BADMUSIC.utils.inline.play import stream_markup
 from BADMUSIC.utils.stream.autoclear import auto_clean
-from BADMUSIC.utils.thumbnails import gen_thumb
+from BADMUSIC.utils.thumbnails import get_thumb
 
 wrong = {}
 downvote = {}
