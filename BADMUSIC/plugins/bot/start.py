@@ -225,12 +225,12 @@ async def start_comm(client, message: Message, _):
 
         try:
             out = music_start_panel(_)
-            bad = await message.reply_text(f"**ᴅιиg ᴅσиg ꨄ︎❣️.....**")
-            await bad.edit_text(f"**ᴅιиg ᴅσиg ꨄ︎.❣️....**")
-            await bad.edit_text(f"**ᴅιиg ᴅσиg ꨄ︎..❣️...**")
-            await bad.edit_text(f"**ᴅιиg ᴅσиg ꨄ︎...❣️..**")
-            await bad.edit_text(f"**ᴅιиg ᴅσиg ꨄ︎....❣️.**")
-            await bad.edit_text(f"**ᴅιиg ᴅσиg ꨄ︎.....❣️**")
+            bad = await message.reply_text(f"**sᴛᴀʀᴛɪɴɢ ✰︎❣️.....**")
+            await bad.edit_text(f"**sᴛᴀʀᴛɪɴɢ ✰︎.❣️....**")
+            await bad.edit_text(f"**sᴛᴀʀᴛɪɴɢ ✰︎..❣️...**")
+            await bad.edit_text(f"**sᴛᴀʀᴛɪɴɢ ✰︎...❣️..**")
+            await bad.edit_text(f"**sᴛᴀʀᴛɪɴɢ ✰︎....❣️.**")
+            await bad.edit_text(f"**sᴛᴀʀᴛɪɴɢ ✰︎.....❣️**")
 
             await bad.delete()
             bads = await message.reply_text("**⚡ѕ**")
