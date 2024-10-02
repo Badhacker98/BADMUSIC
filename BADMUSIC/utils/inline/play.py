@@ -84,8 +84,6 @@ def stream_markup_timerr(_, videoid, chat_id, played, dur):
                 text="ᴄᴏɴᴛʀᴏʟs ♻",
                 callback_data=f"Pages Back|3|{videoid}|{chat_id}",
             ),
-        ],
-        [
             InlineKeyboardButton(
                 text="📥 ᴠɪᴅᴇᴏ", callback_data=f"downloadvideo {videoid}"
             ),
@@ -163,8 +161,6 @@ def telegram_markup_timer(_, chat_id, played, dur):
                 text="ᴄᴏɴᴛʀᴏʟs ♻",
                 callback_data=f"Pages Back|3|{videoid}|{chat_id}",
             ),
-        ],
-        [
             InlineKeyboardButton(
                 text="📥 ᴠɪᴅᴇᴏ", callback_data=f"downloadvideo {videoid}"
             ),
@@ -436,8 +432,6 @@ def stream_markup(_, videoid, chat_id):
                 text="ᴄᴏɴᴛʀᴏʟs ♻",
                 callback_data=f"Pages Back|3|{videoid}|{chat_id}",
             ),
-        ],
-        [
             InlineKeyboardButton(
                 text="📥 ᴠɪᴅᴇᴏ", callback_data=f"downloadvideo {videoid}"
             ),
@@ -659,8 +653,6 @@ def stream_markup_timer2(_, chat_id, played, dur):
                 text="ᴄᴏɴᴛʀᴏʟs ♻",
                 callback_data=f"Pages Back|3|{videoid}|{chat_id}",
             ),
-        ],
-        [
             InlineKeyboardButton(
                 text="📥 ᴠɪᴅᴇᴏ", callback_data=f"downloadvideo {videoid}"
             ),
