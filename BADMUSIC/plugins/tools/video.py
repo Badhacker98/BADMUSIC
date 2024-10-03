@@ -1,16 +1,13 @@
 import future
-
 import asyncio
 import os
 import time
 from urllib.parse import urlparse
-
 import wget
 from pyrogram import filters
 from pyrogram.types import Message
 from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
-
 from BADMUSIC import app
 
 
@@ -34,13 +31,12 @@ def get_text(message: Message) -> [None, str]:
         return None
 
 
-@app.on_message(filters.command(["yt", "video"]))
-async def ytmusic(client, message: Message):
+@app.on_message(filters.command("video"))
+async def download_song(_, message):
     user_id = message.from_user.id
     current_time = time()
     # Update the last message timestamp for the user
     last_message_time = user_last_message_time.get(user_id, 0)
-
     if current_time - last_message_time < SPAM_WINDOW_SECONDS:
         # If less than the spam window time has passed since the last message
         user_last_message_time[user_id] = current_time
