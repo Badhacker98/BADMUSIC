@@ -49,3 +49,5 @@
 <a href="https://instagram.com/lll_bad_munda_lll"><img title="Instagram" src="https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white"></a>
 
 [![Contributors](https://contrib.rocks/image?repo=Badhacker98/BADMUSIC)](https://github.com/Badhacker98/BADMUSIC/graphs/contributors)
+
+<p><img width="500" align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=Badhacker98&show_icons=true&locale=en&layout=compact" alt="Badhacker98" /></p>
