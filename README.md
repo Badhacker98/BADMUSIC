@@ -27,9 +27,11 @@
 
 ### 𝗗𝗘𝗣𝗟𝗢𝗬 𝗧𝗢 𝗛𝗘𝗥𝗢𝗞𝗨, 𝗩𝗣𝗦, 𝗟𝗢𝗖𝗔𝗟, 𝗥𝗘𝗡𝗗𝗘𝗥 𝗛𝗢𝗦𝗧𝗜𝗡𝗚.
 
-- **VPS/Local hosting**
-- - [![Vps](https://img.shields.io/badge/ʙᴀᴅᴍᴜsɪᴄ-ᴅᴇᴘʟᴏʏ%20ᴛᴏ%20ᴠᴘs-black?style=for-the-badge&logo=vps)](https://github.com/Badhacker98/BADMUSIC/blob/bad/MUSIC/local.md)
+ - **Heroku hosting**
+- - [![Vps](https://img.shields.io/badge/ʙᴀᴅᴍᴜsɪᴄ-ᴅᴇᴘʟᴏʏ%20ᴛᴏ%20ʜᴇʀᴏᴋᴜ-blue?style=for-the-badge&logo=vps)](https://github.com/Badhacker98/BADMUSIC/blob/bad/MUSIC/heorku.md)
  
+- **VPS/Local hosting**
+- - [![Vps](https://img.shields.io/badge/ʙᴀᴅᴍᴜsɪᴄ-ᴅᴇᴘʟᴏʏ%20ᴛᴏ%20ᴠᴘs-blue?style=for-the-badge&logo=vps)](https://github.com/Badhacker98/BADMUSIC/blob/bad/MUSIC/local.md)
   - 
 
 ## 🖇 Generating Pyrogram String Session
