@@ -34,11 +34,11 @@
 - - [![Vps](https://img.shields.io/badge/ʙᴀᴅᴍᴜsɪᴄ-ᴅᴇᴘʟᴏʏ%20ᴛᴏ%20ᴠᴘs-blue?style=for-the-badge&logo=vps)](https://github.com/Badhacker98/BADMUSIC/blob/bad/MUSIC/local.md)
   - 
 
-## 🖇 Generating Pyrogram String Session
+## 🖇 𝗚𝗘𝗡𝗘𝗥𝗔𝗧𝗜𝗡𝗚 𝗣𝗬𝗥𝗢𝗚𝗥𝗔𝗠 𝗦𝗧𝗥𝗜𝗡𝗚 𝗦𝗘𝗦𝗦𝗜𝗢𝗡
 
 <p>
-<a href="https://t.me/PbxString_Bot-Gen"><img src="https://img.shields.io/badge/TG%20String%20Gen%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
-<a href="https://t.me/MissBroken_Bot-Gen"><img src="https://img.shields.io/badge/BROKEN%20MUSIC%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
+<a href="https://t.me/Pbxx_String_Bot-Gen"><img src="https://img.shields.io/badge/TG%20String%20Gen%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
+<a href="https://t.me/FlopMusic_Bot-Gen"><img src="https://img.shields.io/badge/BAD%20MUSIC%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
 <a href="https://t.me/II_BAD_MUNDA_II"><img src="https://img.shields.io/badge/DM%20TO%20BADMUNDA-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
 
 
