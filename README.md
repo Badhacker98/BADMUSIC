@@ -20,9 +20,9 @@
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=𝗙𝗢𝗥𝗞+𝗧𝗛𝗜𝗦+𝗥𝗘𝗣𝗢+𝗕𝗘𝗙𝗢𝗥𝗘+𝗗𝗘𝗣𝗟𝗢𝗬)
 
-## ⚠️ 𝗗𝗜𝗦𝗖𝗟𝗔𝗜𝗠𝗘𝗥
+## ⚠️ 𝗧𝗘𝗦𝗧 𝗕𝗢𝗧
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+Tᴇsᴛ ʙᴏᴛ ➣ [⎯꯭̽𓏲᷏᪳͢♡𝐅ʟᴏᴘ➫͢𝐌ᴜꜱɪᴄ «༎●⃮⃮⃮⃖⃖,](https://t.me/FlopMusic_Bot)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### 𝗗𝗘𝗣𝗟𝗢𝗬 𝗧𝗢 𝗛𝗘𝗥𝗢𝗞𝗨, 𝗩𝗣𝗦, 𝗟𝗢𝗖𝗔𝗟, 𝗥𝗘𝗡𝗗𝗘𝗥 𝗛𝗢𝗦𝗧𝗜𝗡𝗚.
@@ -38,7 +38,9 @@
 
 <p>
 <a href="https://t.me/Pbxx_String_Bot-Gen"><img src="https://img.shields.io/badge/TG%20String%20Gen%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
-<a href="https://t.me/FlopMusic_Bot-Gen"><img src="https://img.shields.io/badge/BAD%20MUSIC%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
+
+## 🖇 𝗔𝗡𝗬 𝗘𝗥𝗥𝗢𝗥
+<img src="https://readme-typing-svg.herokuapp.com?color=FF0000&width=420&lines=❤️ᴀɴʏ+ᴇʀʀᴏʀ+ᴛʜᴇɴ+sᴇɴᴅ+ᴇʀʀᴏʀ+ɪɴ+ʙᴀᴅ+ᴍᴜɴᴅᴀ+ᴅᴍ+...">
 <a href="https://t.me/ll_BAD_MUNDA_ll"><img src="https://img.shields.io/badge/DM%20TO%20BADMUNDA-blueviolet?style=for-the-badge&logo=appveyor" width="200""/></a>
 
 
