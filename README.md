@@ -25,6 +25,12 @@
 👉🏻 ʜᴇʏ ɢᴜʏ's, ᴅᴏɴ'ᴛ ᴜsᴇ ʏᴏᴜʀ ʀᴇᴀʟ ɪ'ᴅ sᴇssɪᴏɴ ᴀs ᴀ ᴀssɪsᴛᴀɴᴛ ʙᴄᴏᴢ ᴛʜᴇ ᴀssɪsᴛᴀɴᴛ ᴡɪʟʟ ʟᴇᴀᴠᴇ ᴀʟʟ ᴛʜᴇ ɢʀᴏᴜᴘs & ᴄʜᴀɴɴᴇʟs.ᴜ  ᴍɪɢʜᴛ ʟᴏᴏsᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘs ᴏᴡɴᴇʀsʜɪᴘ ᴀɴᴅ ᴀᴅᴍɪɴsʜɪᴘ 🥺 sᴏ ᴜsᴇ ʏᴏᴜʀ ᴀɴʏ ᴏᴛʜᴇʀ ɪ'ᴅ sᴇssɪᴏɴ 👈🏻
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+### ᴅᴇᴘʟᴏʏ ᴛᴏ ʜᴇʀᴏᴋᴜ,ᴠᴘs,ʟᴏᴄᴀʟ,ʀᴇɴᴅᴇʀ ʜᴏsᴛɪɴɢ.
+
+- **VPS/Local hosting**
+- - [![Vps](https://img.shields.io/badge/ᴘʙxʙᴏᴛ-ᴅᴇᴘʟᴏʏ%20ᴛᴏ%20ᴠᴘs-black?style=for-the-badge&logo=vps)](https://github.com/Badhacker98/BADMUSIC/blob/bad/MUSIC/local.md)
+ 
+  - 
 
 ## 🖇 Generating Pyrogram String Session
 
