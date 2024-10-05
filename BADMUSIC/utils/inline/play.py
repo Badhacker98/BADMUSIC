@@ -48,26 +48,26 @@ def stream_markup_timerr(_, videoid, chat_id, played, dur):
     umm = math.floor(percentage)
 
     # Fun and engaging sentences with progress bar
-    if 10 < umm <= 20:
-        bar = "——◉——————————"
-    elif 20 <= umm < 35:
-        bar = "—————◉———————"
-    elif 35 <= umm < 50:
-        bar = "——————◉——————"
-    elif 50 <= umm < 75:
-        bar = "———————◉—————"
-    elif 75 <= umm < 80:
-        bar = "————————◉————"
-    elif 80 <= umm < 85:
-        bar = "—————————◉———"
-    elif 85 <= umm < 90:
-        bar = "——————————◉——"
-    elif 90 <= umm < 95:
-        bar = "———————————◉—"
-    elif 95 <= umm < 100:
-        bar = "————————————◉"
+    if 0 < umm <= 10:
+        bar = "▷—————————"
+    elif 10 < umm < 20:
+        bar = "—▷————————"
+    elif 20 <= umm < 30:
+        bar = "——▷———————"
+    elif 30 <= umm < 40:
+        bar = "———▷——————"
+    elif 40 <= umm < 50:
+        bar = "————▷—————"
+    elif 50 <= umm < 60:
+        bar = "—————▷————"
+    elif 60 <= umm < 70:
+        bar = "——————▷———"
+    elif 70 <= umm < 80:
+        bar = "———————▷——"
+    elif 80 <= umm < 95:
+        bar = "————————▷—"
     else:
-        bar = "◉——————————————"
+        bar = "—————————▷"
 
     buttons = [
         [
@@ -125,26 +125,26 @@ def telegram_markup_timer(_, chat_id, played, dur):
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
     umm = math.floor(percentage)
-    if 10 < umm <= 20:
-        bar = "——◉——————————"
-    elif 20 <= umm < 35:
-        bar = "—————◉———————"
-    elif 35 <= umm < 50:
-        bar = "——————◉——————"
-    elif 50 <= umm < 75:
-        bar = "———————◉—————"
-    elif 75 <= umm < 80:
-        bar = "————————◉————"
-    elif 80 <= umm < 85:
-        bar = "—————————◉———"
-    elif 85 <= umm < 90:
-        bar = "——————————◉——"
-    elif 90 <= umm < 95:
-        bar = "———————————◉—"
-    elif 95 <= umm < 100:
-        bar = "————————————◉"
+    if 0 < umm <= 10:
+        bar = "▷—————————"
+    elif 10 < umm < 20:
+        bar = "—▷————————"
+    elif 20 <= umm < 30:
+        bar = "——▷———————"
+    elif 30 <= umm < 40:
+        bar = "———▷——————"
+    elif 40 <= umm < 50:
+        bar = "————▷—————"
+    elif 50 <= umm < 60:
+        bar = "—————▷————"
+    elif 60 <= umm < 70:
+        bar = "——————▷———"
+    elif 70 <= umm < 80:
+        bar = "———————▷——"
+    elif 80 <= umm < 95:
+        bar = "————————▷—"
     else:
-        bar = "◉——————————————"
+        bar = "—————————▷"
 
     buttons = [
         [
@@ -359,26 +359,26 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
     umm = math.floor(percentage)
-    if 10 < umm <= 20:
-        bar = "——◉——————————"
-    elif 20 <= umm < 35:
-        bar = "—————◉———————"
-    elif 35 <= umm < 50:
-        bar = "——————◉——————"
-    elif 50 <= umm < 75:
-        bar = "———————◉—————"
-    elif 75 <= umm < 80:
-        bar = "————————◉————"
-    elif 80 <= umm < 85:
-        bar = "—————————◉———"
-    elif 85 <= umm < 90:
-        bar = "——————————◉——"
-    elif 90 <= umm < 95:
-        bar = "———————————◉—"
-    elif 95 <= umm < 100:
-        bar = "————————————◉"
+    if 0 < umm <= 10:
+        bar = "▷—————————"
+    elif 10 < umm < 20:
+        bar = "—▷————————"
+    elif 20 <= umm < 30:
+        bar = "——▷———————"
+    elif 30 <= umm < 40:
+        bar = "———▷——————"
+    elif 40 <= umm < 50:
+        bar = "————▷—————"
+    elif 50 <= umm < 60:
+        bar = "—————▷————"
+    elif 60 <= umm < 70:
+        bar = "——————▷———"
+    elif 70 <= umm < 80:
+        bar = "———————▷——"
+    elif 80 <= umm < 95:
+        bar = "————————▷—"
     else:
-        bar = "◉——————————————"
+        bar = "—————————▷"
 
     buttons = [
         [
@@ -617,26 +617,26 @@ def stream_markup_timer2(_, chat_id, played, dur):
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
     umm = math.floor(percentage)
-    if 10 < umm <= 20:
-        bar = "——◉——————————"
-    elif 20 <= umm < 35:
-        bar = "—————◉———————"
-    elif 35 <= umm < 50:
-        bar = "——————◉——————"
-    elif 50 <= umm < 75:
-        bar = "———————◉—————"
-    elif 75 <= umm < 80:
-        bar = "————————◉————"
-    elif 80 <= umm < 85:
-        bar = "—————————◉———"
-    elif 85 <= umm < 90:
-        bar = "——————————◉——"
-    elif 90 <= umm < 95:
-        bar = "———————————◉—"
-    elif 95 <= umm < 100:
-        bar = "————————————◉"
+    if 0 < umm <= 10:
+        bar = "▷—————————"
+    elif 10 < umm < 20:
+        bar = "—▷————————"
+    elif 20 <= umm < 30:
+        bar = "——▷———————"
+    elif 30 <= umm < 40:
+        bar = "———▷——————"
+    elif 40 <= umm < 50:
+        bar = "————▷—————"
+    elif 50 <= umm < 60:
+        bar = "—————▷————"
+    elif 60 <= umm < 70:
+        bar = "——————▷———"
+    elif 70 <= umm < 80:
+        bar = "———————▷——"
+    elif 80 <= umm < 95:
+        bar = "————————▷—"
     else:
-        bar = "◉——————————————"
+        bar = "—————————▷"
 
     buttons = [
         [
@@ -834,26 +834,26 @@ def panel_markup_4(_, vidid, chat_id, played, dur):
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
     umm = math.floor(percentage)
-    if 10 < umm <= 20:
-        bar = "——◉——————————"
-    elif 20 <= umm < 35:
-        bar = "—————◉———————"
-    elif 35 <= umm < 50:
-        bar = "——————◉——————"
-    elif 50 <= umm < 75:
-        bar = "———————◉—————"
-    elif 75 <= umm < 80:
-        bar = "————————◉————"
-    elif 80 <= umm < 85:
-        bar = "—————————◉———"
-    elif 85 <= umm < 90:
-        bar = "——————————◉——"
-    elif 90 <= umm < 95:
-        bar = "———————————◉—"
-    elif 95 <= umm < 100:
-        bar = "————————————◉"
+    if 0 < umm <= 10:
+        bar = "▷—————————"
+    elif 10 < umm < 20:
+        bar = "—▷————————"
+    elif 20 <= umm < 30:
+        bar = "——▷———————"
+    elif 30 <= umm < 40:
+        bar = "———▷——————"
+    elif 40 <= umm < 50:
+        bar = "————▷—————"
+    elif 50 <= umm < 60:
+        bar = "—————▷————"
+    elif 60 <= umm < 70:
+        bar = "——————▷———"
+    elif 70 <= umm < 80:
+        bar = "———————▷——"
+    elif 80 <= umm < 95:
+        bar = "————————▷—"
     else:
-        bar = "◉——————————————"
+        bar = "—————————▷"
 
     buttons = [
         [
