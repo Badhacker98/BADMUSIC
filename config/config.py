@@ -89,7 +89,7 @@ UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
     "https://github.com/Badhacker98/BADMUSIC",
 )
-UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "bad")
+UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "Bad")
 
 # GIT TOKEN ( if your edited repo is private)
 GIT_TOKEN = getenv(
