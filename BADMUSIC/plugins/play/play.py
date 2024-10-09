@@ -9,7 +9,7 @@ from time import time
 import httpx
 from pyrogram import filters
 from pyrogram.errors import FloodWait
-from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
+from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message, InlineKeyboardButton
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
