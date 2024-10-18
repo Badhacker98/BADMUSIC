@@ -23,6 +23,8 @@ class Userbot(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
+            no_updates=False,
+            plugins=dict(root="BADMUSIC.plugins.userbot"),
         )
 
         self.two = Client(
@@ -30,6 +32,7 @@ class Userbot(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING2),
+            no_updates=False,
         )
 
         self.three = Client(
@@ -37,6 +40,7 @@ class Userbot(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING3),
+            no_updates=False,
         )
 
         self.four = Client(
@@ -44,6 +48,7 @@ class Userbot(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING4),
+            no_updates=False,
         )
 
         self.five = Client(
@@ -51,6 +56,7 @@ class Userbot(Client):
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING5),
+            no_updates=False,
         )
 
     async def start(self):
