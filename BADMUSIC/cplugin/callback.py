@@ -520,7 +520,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                     reply_markup=InlineKeyboardMarkup(button),
                 )
                 db[chat_id][0]["mystic"] = run
-               db[chat_id][0]["markup"] = "tg"
+                db[chat_id][0]["markup"] = "tg"
             else:
                 button = stream_markup(_, videoid, chat_id)
                 img = await get_thumb(videoid)
