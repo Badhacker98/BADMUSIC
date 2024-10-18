@@ -12,8 +12,7 @@ from BADMUSIC.utils.decorators.language import language
 from BADMUSIC.utils.inline import support_group_markup
 
 
-@app.on_message(filters.command(["ping", "alive"]) & ~BANNED_USERS)
-@language
+@Client.on_message(filters.command("ping"))
 async def ping_com(client, message: Message, _):
     response = await message.reply_photo(
         photo=PING_IMG_URL,
