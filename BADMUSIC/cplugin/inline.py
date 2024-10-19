@@ -7,6 +7,7 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
     InlineQueryResultPhoto,
 )
+from pyrogram import Client, filters
 from youtubesearchpython.__future__ import VideosSearch
 
 from config import BANNED_USERS
@@ -14,7 +15,7 @@ from BADMUSIC import app
 from BADMUSIC.utils.inlinequery import answer
 
 
-@app.on_inline_query(~BANNED_USERS)
+@Client.on_inline_query(~BANNED_USERS)
 async def inline_query_handler(client, query):
     text = query.query.strip().lower()
     answers = []
@@ -57,7 +58,7 @@ async def inline_query_handler(client, query):
 
 __ʀᴇᴘʟʏ ᴡɪᴛʜ /play ᴏɴ ᴛʜɪs sᴇᴀʀᴄʜᴇᴅ ᴍᴇssᴀɢᴇ ᴛᴏ sᴛʀᴇᴀᴍ ɪᴛ ᴏɴ ᴠᴏɪᴄᴇᴄʜᴀᴛ.__
 
-⚡️ ** ɪɴʟɪɴᴇ sᴇᴀʀᴄʜ ʙʏ {app.mention} **"""
+⚡️ ** ɪɴʟɪɴᴇ sᴇᴀʀᴄʜ ʙʏ {Client.mention} **"""
             answers.append(
                 InlineQueryResultPhoto(
                     photo_url=thumbnail,
@@ -72,3 +73,4 @@ __ʀᴇᴘʟʏ ᴡɪᴛʜ /play ᴏɴ ᴛʜɪs sᴇᴀʀᴄʜᴇᴅ ᴍᴇssᴀ�
             return await client.answer_inline_query(query.id, results=answers)
         except:
             return
+            
