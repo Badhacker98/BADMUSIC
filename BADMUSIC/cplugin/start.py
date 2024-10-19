@@ -4,6 +4,7 @@
 import asyncio
 import time
 
+from pyrogram import Client, filters
 from pyrogram import filters
 from pyrogram.enums import ParseMode
 from pyrogram.types import (
@@ -41,7 +42,7 @@ from .help import paginate_modules
 loop = asyncio.get_running_loop()
 
 
-@app.on_message(group=-1)
+@Client.on_message(group=-1)
 async def ban_new(client, message):
     user_id = (
         message.from_user.id if message.from_user and message.from_user.id else 777000
@@ -57,7 +58,7 @@ async def ban_new(client, message):
             pass
 
 
-@app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
+@Client.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_comm(client, message: Message, _):
     chat_id = message.chat.id
@@ -153,7 +154,7 @@ async def start_comm(client, message: Message, _):
                 sender_id = message.from_user.id
                 sender_mention = message.from_user.mention
                 sender_name = message.from_user.first_name
-                return await app.send_message(
+                return await Client.send_message(
                     config.LOG_GROUP_ID,
                     f"{message.from_user.mention} ʜᴀs ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <code>sᴜᴅᴏʟɪsᴛ </code>\n\n**ᴜsᴇʀ ɪᴅ :** {sender_id}\n**ᴜsᴇʀ ɴᴀᴍᴇ:** {sender_name}",
                 )
@@ -206,7 +207,7 @@ async def start_comm(client, message: Message, _):
                 ]
             )
             await m.delete()
-            await app.send_photo(
+            await Client.send_photo(
                 message.chat.id,
                 photo=thumbnail,
                 caption=searched_text,
@@ -217,7 +218,7 @@ async def start_comm(client, message: Message, _):
             if await is_on_off(config.LOG):
                 sender_id = message.from_user.id
                 sender_name = message.from_user.first_name
-                return await app.send_message(
+                return await Client.send_message(
                     config.LOG_GROUP_ID,
                     f"{message.from_user.mention} ʜᴀs ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ<code> ᴠɪᴅᴇᴏ ɪɴғᴏʀᴍᴀᴛɪᴏɴ </code>\n\n**ᴜsᴇʀ ɪᴅ:** {sender_id}\n**ᴜsᴇʀ ɴᴀᴍᴇ** {sender_name}",
                 )
@@ -257,7 +258,7 @@ async def start_comm(client, message: Message, _):
             await bads.edit_text("**🤡ᴡᴇʟᴄᴏᴍᴇ ᴍᴜsɪᴄ ʙᴏᴛ....**")
             if message.chat.photo:
 
-                userss_photo = await app.download_media(
+                userss_photo = await Client.download_media(
                     message.chat.photo.big_file_id,
                 )
             else:
@@ -271,19 +272,19 @@ async def start_comm(client, message: Message, _):
         await bads.delete()
         await message.reply_photo(
             photo=chat_photo,
-            caption=_["start_2"].format(message.from_user.mention, app.mention),
+            caption=_["start_2"].format(message.from_user.mention, Client.mention),
             reply_markup=InlineKeyboardMarkup(out),
         )
         if await is_on_off(config.LOG):
             sender_id = message.from_user.id
             sender_name = message.from_user.first_name
-            return await app.send_message(
+            return await Client.send_message(
                 config.LOG_GROUP_ID,
                 f"{message.from_user.mention} ʜᴀs sᴛᴀʀᴛᴇᴅ ʙᴏᴛ. \n\n**ᴜsᴇʀ ɪᴅ :** {sender_id}\n**ᴜsᴇʀ ɴᴀᴍᴇ:** {sender_name}",
             )
 
 
-@app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def testbot(client, message: Message, _):
     try:
@@ -323,7 +324,7 @@ async def testbot(client, message: Message, _):
         print(f"Error: {e}")
 
 
-@app.on_message(filters.new_chat_members, group=3)
+@Client.on_message(filters.new_chat_members, group=3)
 async def welcome(client, message: Message):
     chat_id = message.chat.id
 
@@ -379,12 +380,12 @@ async def welcome(client, message: Message):
             return
 
 
-@app.on_callback_query(filters.regex("go_to_start"))
+@Client.on_callback_query(filters.regex("go_to_start"))
 @LanguageStart
 async def go_to_home(client, callback_query: CallbackQuery, _):
     out = music_start_panel(_)
     await callback_query.message.edit_text(
-        text=_["start_2"].format(callback_query.message.from_user.mention, app.mention),
+        text=_["start_2"].format(callback_query.message.from_user.mention, Client.mention),
         reply_markup=InlineKeyboardMarkup(out),
     )
 
@@ -413,4 +414,5 @@ __HELP__ = f"""
 
 <b>✧ /authorized</b> - Cʜᴇᴄᴋ ᴀʟʟ ᴀʟʟᴏᴡᴇᴅ ᴄʜᴀᴛs ᴏғ ʏᴏᴜʀ ʙᴏᴛ.
 """
+
             
