@@ -2,6 +2,7 @@ import random
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram import filters, Client
 
 from config import (
     BANNED_USERS,
@@ -48,7 +49,7 @@ downvoters = {}
 # =============================FUNCTIONS==============================#
 
 
-@app.on_callback_query(filters.regex("PanelMarkup") & ~BANNED_USERS)
+@Client.on_callback_query(filters.regex("PanelMarkup") & ~BANNED_USERS)
 @languageCB
 async def markup_panel(client, CallbackQuery: CallbackQuery, _):
     await CallbackQuery.answer()
@@ -66,7 +67,7 @@ async def markup_panel(client, CallbackQuery: CallbackQuery, _):
         return
 
 
-@app.on_callback_query(filters.regex("MainMarkup") & ~BANNED_USERS)
+@Client.on_callback_query(filters.regex("MainMarkup") & ~BANNED_USERS)
 @languageCB
 async def del_back_playlists(client, CallbackQuery, _):
     await CallbackQuery.answer()
@@ -83,7 +84,7 @@ async def del_back_playlists(client, CallbackQuery, _):
         return
 
 
-@app.on_callback_query(filters.regex("MusicMarkup") & ~BANNED_USERS)
+@Client.on_callback_query(filters.regex("MusicMarkup") & ~BANNED_USERS)
 @languageCB
 async def music_markup(client, CallbackQuery, _):
     await CallbackQuery.answer()
@@ -100,7 +101,7 @@ async def music_markup(client, CallbackQuery, _):
         return
 
 
-@app.on_callback_query(filters.regex("Pages") & ~BANNED_USERS)
+@Client.on_callback_query(filters.regex("Pages") & ~BANNED_USERS)
 @languageCB
 async def del_back_playlist(client, CallbackQuery, _):
     await CallbackQuery.answer()
@@ -144,13 +145,13 @@ async def del_back_playlist(client, CallbackQuery, _):
         return
 
 
-@app.on_callback_query(filters.regex("unban_assistant"))
+@Client.on_callback_query(filters.regex("unban_assistant"))
 async def unban_assistant(_, callback: CallbackQuery):
     chat_id = callback.message.chat.id
     userbot = await get_assistant(chat_id)
 
     try:
-        await app.unban_chat_member(chat_id, userbot.id)
+        await Client.unban_chat_member(chat_id, userbot.id)
         await callback.answer(
             "𝗠𝘆 𝗔𝘀𝘀𝗶𝘀𝘁𝗮𝗻𝘁 𝗜𝗱 𝗨𝗻𝗯𝗮𝗻𝗻𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆🥳\n\n➻ 𝗡𝗼𝘄 𝗬𝗼𝘂 𝗖𝗮𝗻 𝗣𝗹𝗮𝘆 𝗦𝗼𝗻𝗴𝘀🔉\n\n𝗧𝗵𝗮𝗻𝗸 𝗬𝗼𝘂💝",
             show_alert=True,
@@ -416,7 +417,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             run = await CallbackQuery.message.reply_photo(
                 photo=img,
                 caption=_["stream_1"].format(
-                    f"https://t.me/{app.username}?start=info_{videoid}",
+                    f"https://t.me/{Client.username}?start=info_{videoid}",
                     title[:23],
                     duration,
                     user,
@@ -452,7 +453,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             run = await CallbackQuery.message.reply_photo(
                 photo=img,
                 caption=_["stream_1"].format(
-                    f"https://t.me/{app.username}?start=info_{videoid}",
+                    f"https://t.me/{Client.username}?start=info_{videoid}",
                     title[:23],
                     duration,
                     user,
@@ -527,7 +528,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                 run = await CallbackQuery.message.reply_photo(
                     photo=img,
                     caption=_["stream_1"].format(
-                        f"https://t.me/{app.username}?start=info_{videoid}",
+                        f"https://t.me/{Client.username}?start=info_{videoid}",
                         title[:23],
                         duration,
                         user,
@@ -592,6 +593,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             db[chat_id][0]["played"] += duration_to_skip
         string = _["admin_33"].format(seconds_to_min(to_seek))
         await mystic.edit_text(f"{string}\n\nᴄʜᴀɴɢᴇs ᴅᴏɴᴇ ʙʏ : {mention} !")
+
 
 """async def markup_timers():
     while not await asyncio.sleep(5):
@@ -703,4 +705,4 @@ __HELP__ = """
 
 <b>✧ /skip</b> ᴏʀ <b>/cskip</b> [Nᴜᴍʙᴇʀ (ᴇxᴀᴍᴘʟᴇ: 𝟹)] - Sᴋɪᴘs ᴍᴜsɪᴄ ᴛᴏ ᴀ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ǫᴜᴇᴜᴇᴅ ɴᴜᴍʙᴇʀ. Exᴀᴍᴘʟᴇ: <b>/skip 𝟹</b> ᴡɪʟʟ sᴋɪᴘ ᴍᴜsɪᴄ ᴛᴏ ᴛʜɪʀᴅ ǫᴜᴇᴜᴇᴅ ᴍᴜsɪᴄ ᴀɴᴅ ᴡɪʟʟ ɪɢɴᴏʀᴇ 𝟷 ᴀɴᴅ 𝟸 ᴍᴜsɪᴄ ɪɴ ǫᴜᴇᴜᴇ.
 
-<b>✧ /loop</b> ᴏʀ <b>/cloop</b>  [ᴇɴᴀʙʟᴇ/ᴅɪsᴀʙʟᴇ] ᴏʀ [Nᴜᴍʙᴇʀs ʙᴇᴛᴡᴇᴇɴ 𝟷-𝟷𝟶] - Wʜᴇɴ ᴀᴄᴛɪᴠᴀᴛᴇᴅ, ʙᴏᴛ ʟᴏᴏᴘs ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴘʟᴀʏɪɴɢ ᴍᴜsɪᴄ ᴛᴏ 𝟷-𝟷𝟶 ᴛɪᴍᴇs ᴏɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ. Dᴇғᴀᴜʟᴛ ᴛᴏ 𝟷𝟶 ᴛɪᴍᴇs."""
+<b>✧ /loop</b> ᴏʀ <b>/cloop</b> [ᴇɴᴀʙʟᴇ/ᴅɪsᴀʙʟᴇ] ᴏʀ [Nᴜᴍʙᴇʀs ʙᴇᴛᴡᴇᴇɴ 𝟷-𝟷𝟶] - Wʜᴇɴ ᴀᴄᴛɪᴠᴀᴛᴇᴅ, ʙᴏᴛ ʟᴏᴏᴘs ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴘʟᴀʏɪɴɢ ᴍᴜsɪᴄ ᴛᴏ 𝟷-𝟷𝟶 ᴛɪᴍᴇs ᴏɴ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ. Dᴇғᴀᴜʟᴛ ᴛᴏ 𝟷𝟶 ᴛɪᴍᴇs."""
