@@ -537,7 +537,7 @@ async def play_commnd(
             await mystic.delete()
             await message.reply_photo(
                 photo=img,
-                 caption=cap,
+                caption=cap,
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
             return await play_logs(message, streamtype=f"Playlist : {plist_type}")
