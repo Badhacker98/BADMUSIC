@@ -1,4 +1,5 @@
 from pyrogram import filters
+from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, Message
 
 import config
@@ -17,7 +18,7 @@ from BADMUSIC.utils.thumbnails import gen_thumb
 SKIP_COMMAND = get_command("SKIP_COMMAND")
 
 
-@app.on_message(filters.command(SKIP_COMMAND) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(SKIP_COMMAND) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def skip(cli, message: Message, _, chat_id):
     if not len(message.command) < 2:
@@ -108,7 +109,7 @@ async def skip(cli, message: Message, _, chat_id):
             photo=img,
             caption=_["stream_1"].format(
                 user,
-                f"https://t.me/{app.username}?start=info_{videoid}",
+                f"https://t.me/{Client.username}?start=info_{videoid}",
             ),
             reply_markup=InlineKeyboardMarkup(button),
         )
@@ -135,7 +136,7 @@ async def skip(cli, message: Message, _, chat_id):
             photo=img,
             caption=_["stream_1"].format(
                 title[:27],
-                f"https://t.me/{app.username}?start=info_{videoid}",
+                f"https://t.me/{Client.username}?start=info_{videoid}",
                 duration_min,
                 user,
             ),
@@ -199,7 +200,7 @@ async def skip(cli, message: Message, _, chat_id):
                 photo=img,
                 caption=_["stream_1"].format(
                     title[:27],
-                    f"https://t.me/{app.username}?start=info_{videoid}",
+                    f"https://t.me/{Client.username}?start=info_{videoid}",
                     duration_min,
                     user,
                 ),
