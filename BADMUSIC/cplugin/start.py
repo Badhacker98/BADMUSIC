@@ -21,7 +21,7 @@ from BADMUSIC.cplugin.utils.database import (
     is_banned_user,
 )
 from BADMUSIC.utils.decorators.language import LanguageStart
-from BADMUSIC.utils.inline import start_pannel, private_panel, start_panel
+from BADMUSIC.utils.inline import first_page, private_panel, start_panel
 
 # Define a dictionary to track the last message timestamp for each user
 user_last_message_time = {}
@@ -71,7 +71,7 @@ async def start_pm(client: Client, message: Message, _):
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
-            keyboard = start_pannel(_)
+            keyboard = first_page(_)
             return await message.reply_photo(
                 photo=config.START_IMG_URL,
                 caption=_["help_1"].format(config.SUPPORT_CHAT),
