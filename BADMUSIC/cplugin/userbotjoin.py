@@ -1,6 +1,7 @@
 import asyncio
 
 from pyrogram import filters
+from pyrogram import filters, Client
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import InviteRequestSent
 
@@ -12,7 +13,7 @@ from BADMUSIC.utils.bad_ban import admin_filter
 links = {}
 
 
-@app.on_message(
+@Client.on_message(
     filters.group & filters.command(["userbotjoin", "ujoin"]) & ~filters.private
 )
 async def join_group(client, message):
@@ -22,7 +23,7 @@ async def join_group(client, message):
     done = await message.reply("**ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ɪɴᴠɪᴛɪɴɢ ᴀssɪsᴛᴀɴᴛ**...")
     await asyncio.sleep(1)
     # Get chat member object
-    chat_member = await app.get_chat_member(chat_id, app.id)
+    chat_member = await Client.get_chat_member(chat_id, Client.id)
 
     # Condition 1: Group username is present, bot is not admin
     if (
@@ -48,7 +49,7 @@ async def join_group(client, message):
             await done.edit_text("**✅ ᴀssɪsᴛᴀɴᴛ ᴊᴏɪɴᴇᴅ.**")
         except InviteRequestSent:
             try:
-                await app.approve_chat_join_request(chat_id, userbot_id)
+                await Client.approve_chat_join_request(chat_id, userbot_id)
             except Exception:
                 pass
         except Exception as e:
@@ -56,13 +57,13 @@ async def join_group(client, message):
 
     # Condition 3: Group username is not present/group is private, bot is admin and Userbot is banned
     if message.chat.username and chat_member.status == ChatMemberStatus.ADMINISTRATOR:
-        userbot_member = await app.get_chat_member(chat_id, userbot.id)
+        userbot_member = await Client.get_chat_member(chat_id, userbot.id)
         if userbot_member.status in [
             ChatMemberStatus.BANNED,
             ChatMemberStatus.RESTRICTED,
         ]:
             try:
-                await app.unban_chat_member(chat_id, userbot.id)
+                await Client.unban_chat_member(chat_id, userbot.id)
                 await done.edit_text("**ᴀssɪsᴛᴀɴᴛ ɪs ᴜɴʙᴀɴɴɪɴɢ...**")
                 await userbot.join_chat(message.chat.username)
                 await done.edit_text(
@@ -70,7 +71,7 @@ async def join_group(client, message):
                 )
             except InviteRequestSent:
                 try:
-                    await app.approve_chat_join_request(chat_id, userbot_id)
+                    await Client.approve_chat_join_request(chat_id, userbot_id)
                 except Exception:
                     pass
             except Exception as e:
@@ -93,7 +94,7 @@ async def join_group(client, message):
     ):
         try:
             try:
-                userbot_member = await app.get_chat_member(chat_id, userbot.id)
+                userbot_member = await Client.get_chat_member(chat_id, userbot.id)
                 if userbot_member.status not in [
                     ChatMemberStatus.BANNED,
                     ChatMemberStatus.RESTRICTED,
@@ -103,7 +104,7 @@ async def join_group(client, message):
             except Exception as e:
                 await done.edit_text("**ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ɪɴᴠɪᴛɪɴɢ ᴀssɪsᴛᴀɴᴛ**.")
                 await done.edit_text("**ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ɪɴᴠɪᴛɪɴɢ ᴀssɪsᴛᴀɴᴛ**...")
-                invite_link = await app.create_chat_invite_link(
+                invite_link = await Client.create_chat_invite_link(
                     chat_id, expire_date=None
                 )
                 await asyncio.sleep(2)
@@ -111,7 +112,7 @@ async def join_group(client, message):
                 await done.edit_text("**✅ ᴀssɪsᴛᴀɴᴛ ᴊᴏɪɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.**")
         except InviteRequestSent:
             try:
-                await app.approve_chat_join_request(chat_id, userbot_id)
+                await Client.approve_chat_join_request(chat_id, userbot_id)
             except Exception:
                 pass
         except Exception as e:
@@ -124,17 +125,17 @@ async def join_group(client, message):
         not message.chat.username
         and chat_member.status == ChatMemberStatus.ADMINISTRATOR
     ):
-        userbot_member = await app.get_chat_member(chat_id, userbot.id)
+        userbot_member = await Client.get_chat_member(chat_id, userbot.id)
         if userbot_member.status in [
             ChatMemberStatus.BANNED,
             ChatMemberStatus.RESTRICTED,
         ]:
             try:
-                await app.unban_chat_member(chat_id, userbot.id)
+                await Client.unban_chat_member(chat_id, userbot.id)
                 await done.edit_text(
                     "**ᴀssɪsᴛᴀɴᴛ ɪs ᴜɴʙᴀɴɴᴇᴅ**\n**ᴛʏᴘᴇ ᴀɢᴀɪɴ:- /userbotjoin.**"
                 )
-                invite_link = await app.create_chat_invite_link(
+                invite_link = await Client.create_chat_invite_link(
                     chat_id, expire_date=None
                 )
                 await asyncio.sleep(2)
@@ -144,7 +145,7 @@ async def join_group(client, message):
                 )
             except InviteRequestSent:
                 try:
-                    await app.approve_chat_join_request(chat_id, userbot_id)
+                    await Client.approve_chat_join_request(chat_id, userbot_id)
                 except Exception:
                     pass
 
@@ -155,19 +156,19 @@ async def join_group(client, message):
         return
 
 
-@app.on_message(filters.command("userbotleave") & filters.group & admin_filter)
+@Client.on_message(filters.command("userbotleave") & filters.group & admin_filter)
 async def leave_one(client, message):
     try:
         userbot = await get_assistant(message.chat.id)
         await userbot.leave_chat(message.chat.id)
-        await app.send_message(
+        await Client.send_message(
             message.chat.id, "**✅ ᴜsᴇʀʙᴏᴛ sᴜᴄᴄᴇssғᴜʟʟʏ ʟᴇғᴛ ᴛʜɪs Chat.**"
         )
     except Exception as e:
         print(e)
 
 
-@app.on_message(filters.command(["leaveall"]) & SUDOERS)
+@Client.on_message(filters.command(["leaveall"]) & SUDOERS)
 async def leave_all(client, message):
     if message.from_user.id not in SUDOERS:
         return
@@ -193,7 +194,7 @@ async def leave_all(client, message):
                 )
             await asyncio.sleep(3)
     finally:
-        await app.send_message(
+        await Client.send_message(
             message.chat.id,
             f"**✅ ʟᴇғᴛ ғʀᴏᴍ:* {left} chats.\n**❌ ғᴀɪʟᴇᴅ ɪɴ:** {failed} chats.",
         )
