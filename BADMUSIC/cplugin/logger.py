@@ -1,7 +1,7 @@
 
 
 from pyrogram import filters
-
+from pyrogram import filters, Client
 import config
 from strings import get_command
 from BADMUSIC import app
@@ -13,7 +13,7 @@ from BADMUSIC.utils.decorators.language import language
 LOGGER_COMMAND = get_command("LOGGER_COMMAND")
 
 
-@app.on_message(filters.command(LOGGER_COMMAND) & SUDOERS)
+@Client.on_message(filters.command(LOGGER_COMMAND) & SUDOERS)
 @language
 async def logger(client, message, _):
     usage = _["log_1"]
