@@ -252,6 +252,12 @@ async def add_served_chat_clone(chat_id: int):
         return
     return await chatsdbc.insert_one({"chat_id": chat_id})
 
+async def add_served_user_clone(user_id: int):
+    is_served = await is_served_user(user_id)
+    if is_served:
+        return
+    return await usersdbc.insert_one({"user_id": user_id})
+
 
 async def delete_served_chat_clone(chat_id: int):
     await chatsdbc.delete_one({"chat_id": chat_id})
