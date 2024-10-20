@@ -7,6 +7,7 @@ from pyrogram.types import Message
 from config import BANNED_USERS
 from strings import get_command
 from BADMUSIC import app
+from pyrogram import filters, Client
 from BADMUSIC.misc import db
 from BADMUSIC.utils.decorators import AdminRightsCheck
 
@@ -14,7 +15,7 @@ from BADMUSIC.utils.decorators import AdminRightsCheck
 SHUFFLE_COMMAND = get_command("SHUFFLE_COMMAND")
 
 
-@app.on_message(filters.command(SHUFFLE_COMMAND) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(SHUFFLE_COMMAND) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def admins(Client, message: Message, _, chat_id):
     if not len(message.command) == 1:
