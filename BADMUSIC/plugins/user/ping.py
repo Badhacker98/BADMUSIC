@@ -2,8 +2,8 @@
 from datetime import datetime
 
 from pyrogram import filters
-from pyrogram import Client, filters
 from pyrogram.types import Message
+from pyrogram import filters, Client
 
 from config import BANNED_USERS, PING_IMG_URL
 from BADMUSIC import app
@@ -13,11 +13,12 @@ from BADMUSIC.utils.decorators.language import language
 from BADMUSIC.utils.inline import support_group_markup
 
 
-@Client.on_message(filters.command("ping"))
+@Client.on_message(filters.command(["ping", "alive"]) & ~BANNED_USERS)
+@language
 async def ping_com(client, message: Message, _):
     response = await message.reply_photo(
         photo=PING_IMG_URL,
-        caption=_["ping_1"].format(app.mention),
+        caption=_["ping_1"].format(Client.mention),
     )
     start = datetime.now()
     pytgping = await BAD.ping()
@@ -26,7 +27,7 @@ async def ping_com(client, message: Message, _):
     await response.edit_text(
         _["ping_2"].format(
             resp,
-            app.mention,
+            Client.mention,
             UP,
             RAM,
             CPU,
