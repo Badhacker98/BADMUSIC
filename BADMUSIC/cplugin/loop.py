@@ -3,7 +3,7 @@
 
 from pyrogram import filters
 from pyrogram.types import Message
-
+from pyrogram import filters, Client
 from config import BANNED_USERS
 from strings import get_command
 from BADMUSIC import app
@@ -14,7 +14,7 @@ from BADMUSIC.utils.decorators import AdminRightsCheck
 LOOP_COMMAND = get_command("LOOP_COMMAND")
 
 
-@app.on_message(filters.command(LOOP_COMMAND) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(LOOP_COMMAND) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def admins(cli, message: Message, _, chat_id):
     usage = _["admin_24"]
