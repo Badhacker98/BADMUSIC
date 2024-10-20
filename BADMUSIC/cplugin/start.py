@@ -21,7 +21,7 @@ from BADMUSIC.cplugin.utils.database import (
     is_banned_user,
 )
 from BADMUSIC.utils.decorators.language import LanguageStart
-from BADMUSIC.utils.inline import first_page, private_panel, start_panel
+from BADMUSIC.utils.inline import first_page, private_panel, music_start_panel
 
 # Define a dictionary to track the last message timestamp for each user
 user_last_message_time = {}
@@ -157,7 +157,7 @@ async def start_gp(client, message: Message, _):
         user_command_count[user_id] = 1
         user_last_message_time[user_id] = current_time
 
-    out = start_panel(_)
+    out = music_start_panel(_)
     BOT_UP = await bot_up_time()
     await message.reply_photo(
         photo=config.START_IMG_URL,
@@ -224,7 +224,7 @@ async def welcome(client, message: Message):
                     await client.leave_chat(message.chat.id)
                     return
 
-                out = start_panel(_)
+                out = music_start_panel(_)
                 chid = message.chat.id
 
                 try:
