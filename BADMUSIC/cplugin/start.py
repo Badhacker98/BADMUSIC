@@ -257,10 +257,7 @@ async def start_comm(client, message: Message, _):
             await bads.edit_text("**🤡ᴡᴇʟᴄᴏᴍᴇ ᴍᴜsɪᴄ ʙᴏᴛ.**")
             await bads.edit_text("**🤡ᴡᴇʟᴄᴏᴍᴇ ᴍᴜsɪᴄ ʙᴏᴛ....**")
             if message.chat.photo:
-
-                userss_photo = await Client.download_media(
-                    message.chat.photo.big_file_id,
-                )
+                
             else:
                 userss_photo = "assets/nodp.png"
             if userss_photo:
