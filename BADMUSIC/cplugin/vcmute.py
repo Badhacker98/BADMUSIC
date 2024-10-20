@@ -2,6 +2,7 @@
 # Owner https://t.me/ll_BAD_MUNDA_ll
 
 from pyrogram import filters
+from pyrogram import filters, Client
 from pyrogram.types import Message
 
 from config import BANNED_USERS
@@ -11,7 +12,7 @@ from BADMUSIC.utils.database import is_muted, mute_off, mute_on
 from BADMUSIC.utils.decorators import AdminRightsCheck
 
 
-@app.on_message(filters.command(["vcmute"]) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["vcmute"]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def mute_admin(cli, message: Message, _, chat_id):
     if not len(message.command) == 1 or message.reply_to_message:
@@ -25,7 +26,7 @@ async def mute_admin(cli, message: Message, _, chat_id):
     )
 
 
-@app.on_message(filters.command(["vcunmute"]) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["vcunmute"]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def unmute_admin(Client, message: Message, _, chat_id):
     if not len(message.command) == 1 or message.reply_to_message:
