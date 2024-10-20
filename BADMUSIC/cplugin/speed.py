@@ -1,5 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import Message
+from pyrogram import filters, Client
 
 from config import BANNED_USERS, adminlist
 from BADMUSIC import app
@@ -13,7 +14,7 @@ from BADMUSIC.utils.inline import close_markup, speed_markup
 checker = []
 
 
-@app.on_message(
+@Client.on_message(
     filters.command(["cspeed", "speed", "cslow", "slow", "playback", "cplayback"])
     & filters.group
     & ~BANNED_USERS
@@ -22,22 +23,22 @@ checker = []
 async def playback(cli, message: Message, _, chat_id):
     playing = db.get(chat_id)
     if not playing:
-        return await app.send_message(message.chat.id, text=_["queue_2"])
+        return await Client.send_message(message.chat.id, text=_["queue_2"])
     duration_seconds = int(playing[0]["seconds"])
     if duration_seconds == 0:
-        return await app.send_message(message.chat.id, text=_["speed_1"])
+        return await Client.send_message(message.chat.id, text=_["speed_1"])
     file_path = playing[0]["file"]
     if "downloads" not in file_path:
-        return await app.send_message(message.chat.id, text=_["speed_1"])
+        return await Client.send_message(message.chat.id, text=_["speed_1"])
     upl = speed_markup(_, chat_id)
-    return await app.send_message(
+    return await Client.send_message(
         message.chat.id,
-        text=_["speed_2"].format(app.mention),
+        text=_["speed_2"].format(Client.mention),
         reply_markup=upl,
     )
 
 
-@app.on_callback_query(filters.regex("SpeedUP") & ~BANNED_USERS)
+@Client.on_callback_query(filters.regex("SpeedUP") & ~BANNED_USERS)
 @languageCB
 async def del_back_playlist(client, callback_query, _):
     callback_data = callback_query.data.strip()
@@ -80,7 +81,7 @@ async def del_back_playlist(client, callback_query, _):
         await callback_query.answer(_["speed_5"])
     except:
         pass
-    mystic = await app.send_message(
+    mystic = await Client.send_message(
         callback_query.message.chat.id,
         text=_["speed_6"].format(callback_query.from_user.mention),
     )
@@ -94,14 +95,14 @@ async def del_back_playlist(client, callback_query, _):
     except:
         if chat_id in checker:
             checker.remove(chat_id)
-        return await app.send_message(
+        return await Client.send_message(
             callback_query.message.chat.id,
             text=_["speed_7"],
             reply_markup=close_markup(_),
         )
     if chat_id in checker:
         checker.remove(chat_id)
-    await app.send_message(
+    await Client.send_message(
         callback_query.message.chat.id,
         text=_["speed_8"].format(speed, callback_query.from_user.mention),
         reply_markup=close_markup(_),
