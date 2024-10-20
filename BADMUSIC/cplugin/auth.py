@@ -1,5 +1,5 @@
 
-
+from pyrogram import filters, Client
 from pyrogram import filters
 from pyrogram.types import Message
 
@@ -21,7 +21,7 @@ UNAUTH_COMMAND = get_command("UNAUTH_COMMAND")
 AUTHUSERS_COMMAND = get_command("AUTHUSERS_COMMAND")
 
 
-@app.on_message(filters.command(AUTH_COMMAND) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(AUTH_COMMAND) & filters.group & ~BANNED_USERS)
 @AdminActual
 async def auth(client, message: Message, _):
     if not message.reply_to_message:
@@ -30,7 +30,7 @@ async def auth(client, message: Message, _):
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        user = await app.get_users(user)
+        user = await Client.get_users(user)
         user_id = message.from_user.id
         token = await int_to_alpha(user.id)
         from_user_name = message.from_user.first_name
@@ -83,7 +83,7 @@ async def auth(client, message: Message, _):
         await message.reply_text(_["auth_3"])
 
 
-@app.on_message(filters.command(UNAUTH_COMMAND) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(UNAUTH_COMMAND) & filters.group & ~BANNED_USERS)
 @AdminActual
 async def unauthusers(client, message: Message, _):
     if not message.reply_to_message:
@@ -92,7 +92,7 @@ async def unauthusers(client, message: Message, _):
         user = message.text.split(None, 1)[1]
         if "@" in user:
             user = user.replace("@", "")
-        user = await app.get_users(user)
+        user = await Client.get_users(user)
         token = await int_to_alpha(user.id)
         deleted = await delete_authuser(message.chat.id, token)
         get = adminlist.get(message.chat.id)
@@ -116,7 +116,7 @@ async def unauthusers(client, message: Message, _):
         return await message.reply_text(_["auth_5"])
 
 
-@app.on_message(filters.command(AUTHUSERS_COMMAND) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(AUTHUSERS_COMMAND) & filters.group & ~BANNED_USERS)
 @language
 async def authusers(client, message: Message, _):
     _playlist = await get_authuser_names(message.chat.id)
@@ -132,7 +132,7 @@ async def authusers(client, message: Message, _):
             admin_id = _note["admin_id"]
             admin_name = _note["admin_name"]
             try:
-                user = await app.get_users(user_id)
+                user = await Client.get_users(user_id)
                 user = user.first_name
                 j += 1
             except Exception:
