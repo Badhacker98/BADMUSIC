@@ -1,6 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
+from pyrogram import filters, Client
 from config import BANNED_USERS
 from BADMUSIC import app
 from BADMUSIC.core.call import BAD as BAD
@@ -8,7 +9,7 @@ from BADMUSIC.utils.database import is_music_playing, music_off
 from BADMUSIC.utils.decorators import AdminRightsCheck
 
 
-@app.on_message(filters.command(["pause", "cpause"]) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["pause", "cpause"]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def pause_admin(cli, message: Message, _, chat_id):
     if not await is_music_playing(chat_id):
