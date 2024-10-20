@@ -2,6 +2,7 @@
 import asyncio
 
 from pyrogram import filters
+from pyrogram import filters, Client
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import (
@@ -29,7 +30,7 @@ from BADMUSIC.utils.database import (
 )
 
 
-@app.on_message(
+@Client.on_message(
     filters.command(["stop", "end", "cstop", "cend"]) & filters.group & ~BANNED_USERS
 )
 async def stop_music(cli, message: Message):
@@ -77,7 +78,7 @@ async def stop_music(cli, message: Message):
         if chat_id is None:
             return await message.reply_text(_["setting_12"])
         try:
-            await app.get_chat(chat_id)
+            await Client.get_chat(chat_id)
         except:
             return await message.reply_text(_["cplay_4"])
     else:
@@ -104,6 +105,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from BADMUSIC import app
+from pyrogram import filters, Client
 from BADMUSIC.utils.database import get_assistant
 
 photo = [
@@ -114,13 +116,13 @@ photo = [
 ]
 
 
-@app.on_chat_member_updated(filters.group, group=6)
-async def assistant_banned(client: app, member: ChatMemberUpdated):
+@Client.on_chat_member_updated(filters.group, group=6)
+async def assistant_banned(client: Client, member: ChatMemberUpdated):
     chat_id = member.chat.id
     userbot = await get_assistant(chat_id)
     try:
         userbot = await get_assistant(member.chat.id)
-        get = await app.get_chat_member(chat_id, userbot.id)
+        get = await Client.get_chat_member(chat_id, userbot.id)
         if get.status in [ChatMemberStatus.BANNED]:
 
             # Assistant bot has been banned
@@ -154,7 +156,7 @@ async def assistant_banned(client: app, member: ChatMemberUpdated):
             )
 
             # Send photo with the left message and keyboard
-            await app.send_photo(
+            await Client.send_photo(
                 chat_id,
                 photo=random.choice(photo),
                 caption=left_message,
@@ -163,7 +165,7 @@ async def assistant_banned(client: app, member: ChatMemberUpdated):
             # Perform actions like stopping streams or loops
             await BAD.st_stream(chat_id)
             await set_loop(chat_id, 0)
-            await app.unban_chat_member(chat_id, userbot.id)
+            await Client.unban_chat_member(chat_id, userbot.id)
             await asyncio.sleep(10)
     except UserNotParticipant:
         return
