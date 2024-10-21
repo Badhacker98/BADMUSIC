@@ -52,7 +52,7 @@ async def raid(Client: Client, m: Message):
          await asyncio.sleep(0.3)
 
 
-@Client.on_message(filters.command("dmr", prefixes=".") & SUDOERS)
+@Client.on_message(filters.command("dmr", prefixes=".") & SUDO_USER)
 async def draid(Client: Client, m: Message):  
       Bad = "".join(m.text.split(maxsplit=1)[1:]).split(" ", 2)
       if len(Bad) == 2:
