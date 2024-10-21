@@ -10,7 +10,7 @@ from BADMUSIC.cplugin.utils.data import RAID, PBIRAID, OneWord, HIRAID, PORM, EM
 
 
 
-@Client.on_message(filters.command(["raid", "r"], ".") & (filters.me | filters.user(SUDO_USER)))
+@Client.on_message(filters.command("r", prefixes=".") & SUDOERS)
 async def raid(Client: Client, m: Message):  
       Bad = "".join(m.text.split(maxsplit=1)[1:]).split(" ", 2)
       if len(Bad) == 2:
@@ -52,7 +52,7 @@ async def raid(Client: Client, m: Message):
          await asyncio.sleep(0.3)
 
 
-@Client.on_message(filters.command(["dmraid", "dmr"], ".") & (filters.me | filters.user(SUDO_USER)))
+@Client.on_message(filters.command("dmr", prefixes=".") & SUDOERS)
 async def draid(Client: Client, m: Message):  
       Bad = "".join(m.text.split(maxsplit=1)[1:]).split(" ", 2)
       if len(Bad) == 2:
