@@ -30,9 +30,7 @@ from BADMUSIC.utils.database import (
 )
 
 
-@Client.on_message(
-    filters.command(["stop", "end", "cstop", "cend"]) & filters.group & ~BANNED_USERS
-)
+@Client.on_message(filters.command(["stop", "end", "cstop", "cend"], prefixes=["."]) & filters.group & ~BANNED_USERS)
 async def stop_music(cli, message: Message):
     if await is_maintenance() is False:
         if message.from_user.id not in SUDOERS:
