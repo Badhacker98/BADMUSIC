@@ -1,38 +1,24 @@
-
-from datetime import datetime
-
-from pyrogram import filters
-from pyrogram.types import Message
+import time, os
+from pyrogram import filters, __version__
+from pytgcalls import __version__ as version
 from pyrogram import filters, Client
-
-from config import BANNED_USERS, PING_IMG_URL
-from BADMUSIC import app
-from BADMUSIC.core.call import BAD
-from BADMUSIC.utils import bot_sys_stats
 from BADMUSIC.utils.decorators.language import language
-from BADMUSIC.utils.inline import support_group_markup
 
+
+
+ping_txt = """
+**ᴘɪɴɢ ᴘᴏɴɢ ⚡**
+
+⌬ **ᴛɪᴍᴇ ᴛᴀᴋᴇʀ** - `{}`ms
+⌬ **ᴘʏʀᴏɢʀᴀᴍ** - `{}`
+⌬ **ᴘʏᴛɢᴄᴀʟʟs** - `{}`
+"""
 
 @Client.on_message(filters.command(["ping", "alive"], prefixes=["."]) & ~BANNED_USERS)
 @language
-async def ping_com(client, message: Message, _):
-    response = await message.reply_photo(
-        photo=PING_IMG_URL,
-        caption=_["ping_1"].format(Client.mention),
-    )
-    start = datetime.now()
-    pytgping = await BAD.ping()
-    UP, CPU, RAM, DISK = await bot_sys_stats()
-    resp = (datetime.now() - start).microseconds / 1000
-    await response.edit_text(
-        _["ping_2"].format(
-            resp,
-            Client.mention,
-            UP,
-            RAM,
-            CPU,
-            DISK,
-            pytgping,
-        ),
-        reply_markup=support_group_markup(_),
-    )
+async def ping_cmd(client, message):
+    start_time = time.time()
+    a = await message.reply("ᴍᴜsɪᴄ ᴜsᴇʀʙᴏᴛ...")
+    end_time = time.time()
+    ping_time = round((end_time - start_time) * 1000)    
+    await a.edit_text(ping_txt.format(ping_time,__version__, version))
