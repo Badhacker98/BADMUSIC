@@ -10,7 +10,7 @@ from BADMUSIC.cplugin.utils.data import RAID, PBIRAID, OneWord, HIRAID, PORM, EM
 
 
 
-@Client.on_message(filters.command("r", prefixes=".") & SUDO_USER)
+@Client.on_message(filters.command("raid", prefixes=".") & SUDO_USER)
 async def raid(Client: Client, m: Message):  
       Bad = "".join(m.text.split(maxsplit=1)[1:]).split(" ", 2)
       if len(Bad) == 2:
