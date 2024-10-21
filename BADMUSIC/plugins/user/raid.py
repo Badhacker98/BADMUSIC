@@ -6,6 +6,7 @@ from random import choice
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 from pyrogram import filters, Client
+from BADMUSIC.cplugin.utils.data import RAID, PBIRAID, OneWord, HIRAID, PORM, EMOJI
 
 
 @Client.on_message(filters.command("raid", prefixes=".") & SUDOERS)
