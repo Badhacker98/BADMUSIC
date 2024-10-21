@@ -2,6 +2,7 @@ import time, os
 from pyrogram import filters, __version__
 from pytgcalls import __version__ as version
 from pyrogram import filters, Client
+from config import BANNED_USERS
 from BADMUSIC.utils.decorators.language import language
 
 # ---------------------------
