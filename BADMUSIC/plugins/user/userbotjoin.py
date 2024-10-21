@@ -13,9 +13,7 @@ from BADMUSIC.utils.bad_ban import admin_filter
 links = {}
 
 
-@Client.on_message(
-    filters.group & filters.command(["userbotjoin", "join"]) & ~filters.private
-)
+@Client.on_message(filters.command("userbotjoin", "join"), prefixes=["."]) & admin_filter)
 async def join_group(client, message):
     chat_id = message.chat.id
     userbot = await get_assistant(message.chat.id)
