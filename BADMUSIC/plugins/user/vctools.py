@@ -16,7 +16,7 @@ from BADMUSIC.utils.bad_ban import admin_filter
 from BADMUSIC.utils.database import get_assistant
 
 
-@Client.on_message(filters.command("startvc", prefixes=["."]) & admin_filter)
+@Client.on_message(filters.command("vcstart", prefixes=["."]) & admin_filter)
 async def startvc(client: Client, message: Message):
     call_name = message.text.split(maxsplit=1)[1] if len(message.command) > 1 else " VC"
     hell = await message.reply_text("Starting Voice Chat...")
