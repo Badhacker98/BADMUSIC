@@ -9,7 +9,7 @@ from pyrogram import filters, Client
 
 # import 
 from BADMUSIC.misc import SUDOERS
-from BADMUSIC.cplugin.utils.data import RAID, PBIRAID, OneWord, HIRAID, PORM, EMOJI, GROUP
+from BADMUSIC.cplugin.utils.data import RAID, PBIRAID, OneWord, HIRAID, PORM, EMOJI, GROUP, VERIFIED_USERS
 
 
 @Client.on_message(filters.command("raid", prefixes=".") & SUDOERS)
