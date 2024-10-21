@@ -14,11 +14,8 @@ from BADMUSIC.utils.inline.play import stream_markup, telegram_markup
 from BADMUSIC.utils.stream.autoclear import auto_clean
 from BADMUSIC.utils.thumbnails import gen_thumb
 
-# Commands
-SKIP_COMMAND = get_command("SKIP_COMMAND")
 
-
-@Client.on_message(filters.command(SKIP_COMMAND) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["skip", "next"], prefixes=["."]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def skip(cli, message: Message, _, chat_id):
     if not len(message.command) < 2:
