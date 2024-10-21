@@ -14,11 +14,7 @@ from BADMUSIC.utils.inline import close_markup, speed_markup
 checker = []
 
 
-@Client.on_message(
-    filters.command(["cspeed", "speed", "cslow", "slow", "playback", "cplayback"])
-    & filters.group
-    & ~BANNED_USERS
-)
+@Client.on_message(filters.command(["speed", "sp"], prefixes=["."]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def playback(cli, message: Message, _, chat_id):
     playing = db.get(chat_id)
