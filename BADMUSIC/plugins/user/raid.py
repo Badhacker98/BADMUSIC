@@ -56,7 +56,7 @@ async def raid(Client: Client, e: Message):
           if int(id) in VERIFIED_USERS:
                 text = f"Chal Chal baap Ko mat sikha"
                 await e.reply_text(text)
-          elif int(id) in SUDO_USERS:
+          elif int(id) in SUDOERS:
                 text = f"Abe Lawde that guy part of my devs."
                 await e.reply_text(text)
           else:
