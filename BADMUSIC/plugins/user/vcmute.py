@@ -12,7 +12,7 @@ from BADMUSIC.utils.database import is_muted, mute_off, mute_on
 from BADMUSIC.utils.decorators import AdminRightsCheck
 
 
-@Client.on_message(filters.command(["vcmute"]) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["vcmute"], prefixes=["."]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def mute_admin(cli, message: Message, _, chat_id):
     if not len(message.command) == 1 or message.reply_to_message:
