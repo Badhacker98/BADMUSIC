@@ -9,7 +9,7 @@ from BADMUSIC.utils.database import is_music_playing, music_on
 from BADMUSIC.utils.decorators import AdminRightsCheck
 
 
-@Client.on_message(filters.command(["resume", "cresume"]) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["resume", "cresume"], prefixes=["."]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def resume_com(cli, message: Message, _, chat_id):
     if await is_music_playing(chat_id):
