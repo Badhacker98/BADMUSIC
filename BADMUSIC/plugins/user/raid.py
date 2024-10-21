@@ -13,31 +13,63 @@ from BADMUSIC.cplugin.utils.data import RAID, PBIRAID, OneWord, HIRAID, PORM, EM
 
 
 @Client.on_message(filters.command("raid", prefixes=".") & SUDOERS)
-async def raid(x: Client, e: Message):
+async def raid(Client: Client, e: Message):  
       Client = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
-
       if len(Client) == 2:
-          ok = await x.get_users(kex[1])
           counts = int(Client[0])
-          for _ in range(counts):
-                reply = choice(RAID)
-                msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
-                await x.send_message(e.chat.id, msg)
-                await asyncio.sleep(0.1)
-
+          if int(e.chat.id) in GROUP:
+               return await e.reply_text("**Sorry !! i Can't Spam Here.**")
+          ok = await Client.get_users(Client[1])
+          id = ok.id
+#          try:
+#              userz = await Client.get_users(id)
+#          except:
+#              await e.reply(f"`404 : User Doesn't Exists In This Chat !`")
+#              return #remove # to enable this
+          if int(id) in VERIFIED_USERS:
+                text = f"Chal Chal baap Ko mat sikha"
+                await e.reply_text(text)
+          elif int(id) in SUDO_USERS:
+                text = f"Abe Lawde that guy part of my devs."
+                await e.reply_text(text)
+          else:
+              fname = ok.first_name
+              mention = f"[{fname}](tg://user?id={id})"
+              for _ in range(counts):
+                    reply = choice(RAID)
+                    msg = f"{mention} {reply}"
+                    await Client.send_message(e.chat.id, msg)
+                    await asyncio.sleep(0.10)
       elif e.reply_to_message:
-          user_id = e.reply_to_message.from_user.id
-          ok = await x.get_users(user_id)
+          msg_id = e.reply_to_message.from_user.id
           counts = int(Client[0])
-          for _ in range(counts):
-                reply = choice(RAID)
-                msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
-                await x.send_message(e.chat.id, msg)
-                await asyncio.sleep(0.1)
-
+          if int(e.chat.id) in GROUP:
+               return await e.reply_text("**Sorry !! i Can't Spam Here.**")
+          user_id = e.reply_to_message.from_user.id
+          ok = await Client.get_users(user_id)
+          id = ok.id
+          try:
+              userz = await Client.get_users(id)
+          except:
+              await e.reply(f"`404 : User Doesn't Exists In This Chat !`")
+              return
+          if int(id) in VERIFIED_USERS:
+                text = f"Chal Chal baap Ko mat sikha"
+                await e.reply_text(text)
+          elif int(id) in SUDO_USERS:
+                text = f"Abe Lawde that guy part of my devs."
+                await e.reply_text(text)
+          else:
+              fname = ok.first_name
+              mention = f"[{fname}](tg://user?id={id})"
+              for _ in range(counts):
+                    reply = choice(RAID)
+                    msg = f"{mention} {reply}"
+                    await Client.send_message(e.chat.id, msg)
+                    await asyncio.sleep(0.10)
       else:
-            await e.reply_text("Rᴀɪᴅ 10 <ʀᴇᴘʟʏ ᴛᴏ ᴜꜱᴇʀ ᴏʀ ᴜꜱᴇʀɴᴀᴍᴇ>")  
-
+          await e.reply_text("Usage: .raid count username")
+          
 #pbiraid
 
 @Client.on_message(filters.command("pbiraid", prefixes=".") & SUDOERS)
