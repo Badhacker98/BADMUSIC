@@ -10,7 +10,7 @@ from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
 
 from BADMUSIC import app
-from BADMUSIC.platforms.Youtube import cookie_txt_file
+from BADMUSIC.platforms.Youtube import cookies as cookie_txt_file
 
 # Define a dictionary to track the last query timestamp for each user
 user_last_CallbackQuery_time = {}
@@ -271,4 +271,4 @@ async def download_audio(client, CallbackQuery):
                     ]
                 ]
             ),
-        )
+    )
