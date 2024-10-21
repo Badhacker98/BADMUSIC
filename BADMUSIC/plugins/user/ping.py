@@ -14,7 +14,7 @@ ping_txt = """
 ⌬ **ᴘʏᴛɢᴄᴀʟʟs** - `{}`
 """
 
-@Client.on_message(filters.command(["ping", "alive"], prefixes=["."]) & ~BANNED_USERS)
+@Client.on_message(filters.command(["ping"], prefixes=["."]) & ~BANNED_USERS)
 @language
 async def ping_cmd(client, message):
     start_time = time.time()
