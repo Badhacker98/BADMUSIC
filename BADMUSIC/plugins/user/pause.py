@@ -9,7 +9,7 @@ from BADMUSIC.utils.database import is_music_playing, music_off
 from BADMUSIC.utils.decorators import AdminRightsCheck
 
 
-@Client.on_message(filters.command(["pause", "cpause"]) & filters.group & ~BANNED_USERS)
+@Client.on_message(filters.command(["pause", "cpause"], prefixes=["."]) & filters.group & ~BANNED_USERS)
 @AdminRightsCheck
 async def pause_admin(cli, message: Message, _, chat_id):
     if not await is_music_playing(chat_id):
