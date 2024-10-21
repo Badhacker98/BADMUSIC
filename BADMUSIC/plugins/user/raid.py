@@ -14,11 +14,11 @@ from BADMUSIC.cplugin.utils.data import RAID, PBIRAID, OneWord, HIRAID, PORM, EM
 
 @Client.on_message(filters.command("raid", prefixes=".") & SUDOERS)
 async def raid(x: Client, e: Message):
-      PbxTeam = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
+      Client = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
-      if len(PbxTeam) == 2:
+      if len(Client) == 2:
           ok = await x.get_users(kex[1])
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(RAID)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
@@ -28,7 +28,7 @@ async def raid(x: Client, e: Message):
       elif e.reply_to_message:
           user_id = e.reply_to_message.from_user.id
           ok = await x.get_users(user_id)
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(RAID)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
@@ -42,11 +42,11 @@ async def raid(x: Client, e: Message):
 
 @Client.on_message(filters.command("pbiraid", prefixes=".") & SUDOERS)
 async def raid(x: Client, e: Message):
-      PbxTeam = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
+      Client = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
-      if len(PbxTeam) == 2:
+      if len(Client) == 2:
           ok = await x.get_users(kex[1])
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(PBIRAID)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
@@ -56,7 +56,7 @@ async def raid(x: Client, e: Message):
       elif e.reply_to_message:
           user_id = e.reply_to_message.from_user.id
           ok = await x.get_users(user_id)
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(PBIRAID)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
@@ -71,11 +71,11 @@ async def raid(x: Client, e: Message):
 
 @Client.on_message(filters.command("oneword", prefixes=".") & SUDOERS)
 async def raid(x: Client, e: Message):
-      PbxTeam = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
+      Client = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
-      if len(PbxTeam) == 2:
+      if len(Client) == 2:
           ok = await x.get_users(kex[1])
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(OneWord)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
@@ -85,7 +85,7 @@ async def raid(x: Client, e: Message):
       elif e.reply_to_message:
           user_id = e.reply_to_message.from_user.id
           ok = await x.get_users(user_id)
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(OneWord)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
@@ -100,11 +100,11 @@ async def raid(x: Client, e: Message):
 
 @Client.on_message(filters.command("hiraid", prefixes=".") & SUDOERS)
 async def raid(x: Client, e: Message):
-      PbxTeam = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
+      Client = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
-      if len(PbxTeam) == 2:
+      if len(Client) == 2:
           ok = await x.get_users(kex[1])
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(HIRAID)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
@@ -114,7 +114,7 @@ async def raid(x: Client, e: Message):
       elif e.reply_to_message:
           user_id = e.reply_to_message.from_user.id
           ok = await x.get_users(user_id)
-          counts = int(PbxTeam[0])
+          counts = int(Client[0])
           for _ in range(counts):
                 reply = choice(HIRAID)
                 msg = f"[{ok.first_name}](tg://user?id={ok.id}) {reply}"
