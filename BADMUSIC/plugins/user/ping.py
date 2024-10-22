@@ -46,7 +46,7 @@ async def alive(client: Client, message: Message):
         f"⌬ ᴏᴡɴᴇʀ ➪︎ {client.me.mention}"    
     )
     await message.delete()
-    await message.reply_photo(photo=PING_IMG_URL, caption=txt)
+    await message.reply_photo(photo=UC_IMG_URL, caption=txt)
 
 @Client.on_message(filters.command("ping", prefixes=".") & SUDO_USER)
 async def ping(client: Client, message: Message):
@@ -64,5 +64,5 @@ async def ping(client: Client, message: Message):
         f"⌬ ᴏᴡɴᴇʀ ➪{client.me.mention}\n"
     )
     await message.delete()
-    await message.reply_photo(photo=PING_IMG_URL, caption=txt)
+    await message.reply_photo(photo=UC_IMG_URL, caption=txt)
 
