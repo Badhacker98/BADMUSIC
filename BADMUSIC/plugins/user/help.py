@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from BADMUSIC.misc import SUDOERS as SUDO_USER
 from config import *
 
-R = "BADBOT COMMAND"
+R = "MUSICBOT COMMAND"
 
 
 @Client.on_message(filters.command("help2", prefixes=".") & SUDO_USER)
