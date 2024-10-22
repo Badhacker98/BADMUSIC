@@ -30,7 +30,6 @@ pyyaml
 requests
 speedtest-cli
 spotipy
-telegraph
 tgcrypto
 urllib3
 uvloop
