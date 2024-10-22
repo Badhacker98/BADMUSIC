@@ -46,10 +46,10 @@ Telegram = TeleAPI()
 HELPABLE = {}
 
 TOKEN = {
-    "access_token": "ya29.a0AcM612x6xjTKmTpSHstn1vpFe4R-4nlC-a537bZMFvBAKrDA7MdjgKj71_dLwijsrP5ZLSKFIUNQyHpFOjGh5ifATiFHyXhc4sArPYlbIa_9PqfVJMyfDWLa8vw19SZwHo--fxjDusyV5nqvoGYNcIqyTN8zG7gJl3YIvcSa0P0-rLQNAs0AaCgYKAb0SARMSFQHGX2MivXte9hRxxKS07uayRvAw7w0187",
-    "expires": 1729406829.524444,
-    "refresh_token": "1//05vYI0c8OP0b4CgYIARAAGAUSNwF-L9IrJvP8EzLj-4wkJD-hYD9y1fXRNSGS9CjEQ1YwRxFw1OjatSgXsGooDbs5QcqAPOs3TvM",
+    "access_token": "ya29.a0AcM612xytl8msnJZL5OqAyxxLQhIleZcsbxJscoG2hd-vaaa4BoXOGtavrRAq9hdP7e9NARsc7JFc3-1crVLNazHs8lbhTEobRqBKqnP5j1EbDoXIq9DbHSFel5fNaUumAVDv-R7bzafdJ3ZimLPKu5cXwsp8mvRD1sQLX1jb_kwI7FZiSP8aCgYKAdgSARISFQHGX2MirioVhfnmDQb6-LxEf0NXEA0187",
+    "expires": 1729674748.275185,
     "token_type": "Bearer",
+    "refresh_token": "1//05vYI0c8OP0b4CgYIARAAGAUSNwF-L9IrJvP8EzLj-4wkJD-hYD9y1fXRNSGS9CjEQ1YwRxFw1OjatSgXsGooDbs5QcqAPOs3TvM"
 }
 
 # Convert TOKEN dictionary to a JSON string
