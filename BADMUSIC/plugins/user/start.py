@@ -122,7 +122,7 @@ async def start_pm(client: Client, message: Message, _):
     else:
         out = private_panel(_)
         await message.reply_photo(
-            photo=config.START_IMG_URL,
+            photo=config.UC_IMG_URL,
             caption=_["start_2"].format(message.from_user.mention, a.mention),
             reply_markup=InlineKeyboardMarkup(out),
         )
