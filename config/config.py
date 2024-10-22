@@ -201,7 +201,7 @@ START_IMG_URL = getenv(
 
 UC_IMG_URL = getenv(
     "UC_IMG_URL",
-    "https://envs.sh/pOC.jpg",
+    "https://envs.sh/pMb.jpg",
 )
 
 BOT_IMG_URL = getenv(
