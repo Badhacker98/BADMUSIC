@@ -18,6 +18,7 @@ from pyrogram import filters, Client
 import config
 from config import OWNER_ID
 from strings import get_command
+from BADMUSIC.misc import SUDOERS
 from BADMUSIC import app
 from BADMUSIC.misc import HAPP, SUDOERS, XCB
 from BADMUSIC.utils.database import (
