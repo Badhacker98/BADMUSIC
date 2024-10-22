@@ -1,59 +1,90 @@
 import os
-from pyrogram import Client, filters
-from pyrogram.types import Message
-from telegraph import Telegraph, exceptions, upload_file
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from BADMUSIC import app
 from BADMUSIC.misc import SUDOERS as SUDO_USER
+from TheApi import api
+from pyrogram import filters, Client
 
-telegraph = Telegraph()
-r = telegraph.create_account(short_name="telegram")
-auth_url = r["auth_url"]
-
-def get_text(message: Message) -> [None, str]:
-    """Extract Text From Commands"""
-    text_to_return = message.text
-    if message.text is None:
-        return None
-    if " " in text_to_return:
-        try:
-            return message.text.split(None, 1)[1]
-        except IndexError:
-            return None
-    else:
-        return None
-
-@Client.on_message(filters.command("tgm", prefixes=".") & SUDO_USER)
-async def uptotelegraph(client: Client, message: Message):
-    tex = await message.edit_text("`Processing . . .`")
+@Client.on_message(filters.command("tm", prefixes=".") & SUDO_USER)
+async def get_link_group(client, message):
     if not message.reply_to_message:
-        await tex.edit(
-            "**Reply to an Image or text.**"
+        return await message.reply_text(
+            "Pʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇᴅɪᴀ ᴛᴏ ᴜᴘʟᴏᴀᴅ ᴏɴ Tᴇʟᴇɢʀᴀᴘʜ"
         )
-        return
-    if message.reply_to_message.media:
-        if message.reply_to_message.sticker:
-            m_d = await convert_to_image(message, client)
-        else:
-            m_d = await message.reply_to_message.download()
+
+    media = message.reply_to_message
+    file_size = 0
+    if media.photo:
+        file_size = media.photo.file_size
+    elif media.video:
+        file_size = media.video.file_size
+    elif media.document:
+        file_size = media.document.file_size
+
+    if file_size > 15 * 1024 * 1024:
+        return await message.reply_text("Pʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ᴍᴇᴅɪᴀ ғɪʟᴇ ᴜɴᴅᴇʀ 15MB.")
+
+    try:
+        text = await message.reply("Pʀᴏᴄᴇssɪɴɢ...")
+
+        async def progress(current, total):
+            try:
+                await text.edit_text(f"📥 Dᴏᴡɴʟᴏᴀᴅɪɴɢ... {current * 100 / total:.1f}%")
+            except Exception:
+                pass
+
         try:
-            media_url = upload_file(m_d)
-        except exceptions.TelegraphException as exc:
-            await tex.edit(f"**ERROR:** `{exc}`")
-            os.remove(m_d)
+            local_path = await media.download(progress=progress)
+            await text.edit_text("📤 Uᴘʟᴏᴀᴅɪɴɢ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴘʜ...")
+
+            upload_path = api.upload_image(local_path)
+
+            await text.edit_text(
+                f"🌐 | [ᴜᴘʟᴏᴀᴅᴇᴅ ʟɪɴᴋ]({upload_path})",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "ᴜᴘʟᴏᴀᴅᴇᴅ ғɪʟᴇ",
+                                url=upload_path,
+                            )
+                        ]
+                    ]
+                ),
+            )
+
+            try:
+                os.remove(local_path)
+            except Exception:
+                pass
+
+        except Exception as e:
+            await text.edit_text(f"❌ Fɪʟᴇ ᴜᴘʟᴏᴀᴅ ғᴀɪʟᴇᴅ\n\n<i>Rᴇᴀsᴏɴ: {e}</i>")
+            try:
+                os.remove(local_path)
+            except Exception:
+                pass
             return
-        U_done = (
-            f"**https://telegra.ph/{media_url[0]}**"
-        )
-        await tex.edit(U_done)
-        os.remove(m_d)
-    elif message.reply_to_message.text:
-        page_title = get_text(message) if get_text(message) else client.me.first_name
-        page_text = message.reply_to_message.text
-        page_text = page_text.replace("\n", "<br>")
-        try:
-            response = telegraph.create_page(page_title, html_content=page_text)
-        except exceptions.TelegraphException as exc:
-            await tex.edit(f"**ERROR:** `{exc}`")
-            return
-        wow_graph = f"**https://telegra.ph/{response['path']}"
-        await tex.edit(wow_graph)
-                                    
+    except Exception:
+        pass
+
+
+__HELP__ = """
+**ᴛᴇʟᴇɢʀᴀᴘʜ ᴜᴘʟᴏᴀᴅ ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs**
+
+ᴜsᴇ ᴛʜᴇsᴇ ᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ᴜᴘʟᴏᴀᴅ ᴍᴇᴅɪᴀ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴘʜ:
+
+- `/tgm`: ᴜᴘʟᴏᴀᴅ ʀᴇᴘʟɪᴇᴅ ᴍᴇᴅɪᴀ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴘʜ.
+- `/tgt`: sᴀᴍᴇ ᴀs `/tgm`.
+- `/telegraph`: sᴀᴍᴇ ᴀs `/tgm`.
+- `/tl`: sᴀᴍᴇ ᴀs `/tgm`.
+
+**ᴇxᴀᴍᴘʟᴇ:**
+- ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ ᴏʀ ᴠɪᴅᴇᴏ ᴡɪᴛʜ `/tgm` ᴛᴏ ᴜᴘʟᴏᴀᴅ ɪᴛ.
+
+**ɴᴏᴛᴇ:**
+ʏᴏᴜ ᴍᴜsᴛ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇᴅɪᴀ ғɪʟᴇ ғᴏʀ ᴛʜᴇ ᴜᴘʟᴏᴀᴅ ᴛᴏ ᴡᴏʀᴋ.
+"""
+
+__MODULE__ = "Tᴇʟᴇɢʀᴀᴘʜ"
