@@ -54,14 +54,3 @@ TOKEN = {
 
 # Convert TOKEN dictionary to a JSON string
 os.environ["TOKEN_DATA"] = json.dumps(TOKEN)
-
-from .platforms import *
-
-YouTube = YouTubeAPI()
-Carbon = CarbonAPI()
-Spotify = SpotifyAPI()
-Apple = AppleAPI()
-Resso = RessoAPI()
-SoundCloud = SoundAPI()
-Telegram = TeleAPI()
-HELPABLE = {}
