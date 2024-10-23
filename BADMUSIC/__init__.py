@@ -46,8 +46,8 @@ Telegram = TeleAPI()
 HELPABLE = {}
 
 TOKEN = {
-    "access_token": "ya29.a0AcM612xytl8msnJZL5OqAyxxLQhIleZcsbxJscoG2hd-vaaa4BoXOGtavrRAq9hdP7e9NARsc7JFc3-1crVLNazHs8lbhTEobRqBKqnP5j1EbDoXIq9DbHSFel5fNaUumAVDv-R7bzafdJ3ZimLPKu5cXwsp8mvRD1sQLX1jb_kwI7FZiSP8aCgYKAdgSARISFQHGX2MirioVhfnmDQb6-LxEf0NXEA0187",
-    "expires": 1729674748.275185,
+    "access_token": "ya29.a0AcM612x3BhQYxpwWKVhKrOEibthwGRC5-7fGQgq1Co8g2rFVmD3TyZez5CM05axN7zK7nyPVRsAz_Q03PApFye3hS0OH84s5U0vJ-mpaRCNfgA4cOHAZxBZmWNKm1tnHIma-2oNyRiHNqi9EoepslcOiUEsSQRlnItiemT4Tm10yX3yMJh1HaCgYKAT4SARISFQHGX2MidCZ1bcqwywAZVeQpeKll1Q0187",
+    "expires": 1729735521.927958,
     "token_type": "Bearer",
     "refresh_token": "1//05vYI0c8OP0b4CgYIARAAGAUSNwF-L9IrJvP8EzLj-4wkJD-hYD9y1fXRNSGS9CjEQ1YwRxFw1OjatSgXsGooDbs5QcqAPOs3TvM"
 }
